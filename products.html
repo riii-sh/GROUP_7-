@@ -11,40 +11,34 @@
   h2 { font-weight: normal; text-transform: uppercase; text-align: center; margin-bottom: 30px; }
   section { padding: 50px 40px; }
 
-  /* HEADER */
   header { background: #f7f7f5; display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; }
   .logo { height: 50px; width: 110px; object-fit: contain; }
   nav a { text-transform: uppercase; font-size: 14px; margin: 0 12px; }
   nav a:hover { text-decoration: underline; }
-  .spacer { width: 110px; }   /* keeps the menu centered */
+  .spacer { width: 110px; }
 
-  /* HERO */
   .hero { background: #e8ebe4; text-align: center; height: 50px; border: 2px;}
   .hero h1 { font-weight: normal; font-size: 64px; text-transform: uppercase; }
   .hero p { font-size: 22px; margin: 5px 0 20px; }
   .order { border: 1px solid black; border-radius: 30px; padding: 6px 80px; display: inline-block; }
   .perks { text-align: left; margin-top: 60px; font-size: 22px; line-height: 2; }
 
-  /* BEST SELLERS */
   .best { background: white; }
   .row { display: flex; gap: 25px; }
   .product { flex: 1; border: 1px solid black; padding: 15px; text-align: center; }
    
   .product button { background: #A08E1E; color: white; border: none; border-radius: 20px; padding: 6px 22px; margin-top: 12px; }
 
-  /* INGREDIENTS */
   .ingredients { background: #F1EBAD; }
   .ingredient { flex: 1; display: flex; align-items: center; gap: 20px; }
   .circle { width: 55px; height: 55px; border: 1px solid black; border-radius: 50%; }
   .ingredients .row { margin-bottom: 25px; }
   .ingredient h3 { font-weight: normal; text-transform: uppercase; font-size: 16px; }
 
-  /* JOURNAL */
   .journal { background: white; }
   .post { flex: 1; }
   .post .image { height: 120px; }
 
-  /* FOOTER */
   footer { background: black; color: white; padding: 40px; }
   footer .row { font-size: 13px; }
   footer div { flex: 1; }
@@ -54,7 +48,81 @@
 
   .some {background: black; display: flex; justify-content: center; height: 10px;}
 
-  /* On small screens, stack everything */
+ .band {
+    height: 34px;
+    background: linear-gradient(90deg, #8a7410 0%, #cdbb62 30%, #f0e49a 50%, #cdbb62 70%, #8a7410 100%);
+  }
+
+  .layout { display: flex; flex: none; min-height: calc(100vh - 117px); }
+
+  .sidebar { width: 240px; background: #f0f0f0; border-right: 2px solid #c9b64a; flex-shrink: 0; }
+  .sidebar h2 {
+    font-weight: normal; text-transform: uppercase; text-align: center;
+    font-size: 16px; padding: 10px 0 8px; border-bottom: 1px solid #222;
+    margin-bottom: 10px;
+  }
+  .sidebar ul { list-style: none; }
+  .sidebar li {
+    text-align: center; font-size: 14px; padding: 3px 0; margin: 0 4px 4px;
+    cursor: pointer; border: 1px solid transparent; user-select: none;
+  }
+  .sidebar li:hover { background: #e4e4e4; }
+  .sidebar li.active { background: #dcdcdc; border-color: #a08e1e; }
+  .sidebar li span { display: inline-block; width: 100%; padding-left: 0; }
+
+  .content { flex: 1; padding: 14px 16px; background: #fff; }
+  .grid { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; }
+  .card {
+    width: 190px; background: #e0d48c; border: 2px solid #b8a02a; border-radius: 8px;
+    padding: 8px; cursor: pointer; transition: transform .15s, box-shadow .15s;
+  }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,.2); }
+  .card .image {
+    height: 170px; background: #fff; border: 1px solid #555;
+    display: flex; align-items: center; justify-content: center;
+    color: #aaa; font-size: 12px;
+  }
+  .card h3 { font-weight: normal; font-size: 14px; line-height: 1.2; margin-top: 10px; padding-bottom: 4px; }
+  .empty { font-size: 14px; color: #777; padding: 14px; }
+
+  .modal {
+    display: none; position: fixed; inset: 0; z-index: 100;
+    background: rgba(0,0,0,.55); align-items: center; justify-content: center; padding: 16px;
+  }
+  .modal.open { display: flex; }
+  .modal-box {
+    position: relative; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto;
+    background: #e0d48c; border: 3px solid #b8a02a; border-radius: 12px; padding: 18px;
+    display: flex; gap: 18px;
+  }
+  .close {
+    position: absolute; top: 4px; right: 10px; background: none; border: none;
+    font-size: 26px; cursor: pointer; color: #222; line-height: 1;
+  }
+  .modal-image {
+    width: 200px; height: 240px; flex-shrink: 0; background: #fff; border: 1px solid #555;
+    display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 12px;
+  }
+  .modal-info { flex: 1; min-width: 0; }
+  .modal-info h3 { font-weight: normal; font-size: 20px; margin: 4px 0 8px; }
+  .modal-info p { font-size: 14px; line-height: 1.5; margin-bottom: 14px; }
+  .buy {
+    background: #A08E1E; color: white; border: none; border-radius: 20px;
+    padding: 8px 34px; font-family: inherit; font-size: 15px; cursor: pointer;
+  }
+  .buy:hover { background: #8a7a15; }
+  .shops { display: none; margin-top: 16px; }
+  .shops.show { display: block; }
+  .shops .label { font-size: 13px; margin-bottom: 8px; }
+  .shop-btn {
+    display: block; text-align: center; margin-bottom: 8px; padding: 8px 12px;
+    border-radius: 6px; color: white; font-size: 15px; font-weight: bold;
+  }
+  .shop-btn:hover { opacity: .85; }
+  .shopee { background: #ee4d2d; }
+  .tiktok { background: #111; }
+  .lazada { background: #0f146d; }
+
   @media (max-width: 800px) {
     .row { flex-direction: column; }
     header { flex-direction: column; gap: 10px; }
@@ -77,21 +145,35 @@
   <div class="spacer"></div>
 </header>
 
-<section class="hero">
-  <h1></h1>
-  <p></p>
-  <a class="order" href="shampoo-conditioner.html"></a>
-  <div class="perks">
-    <div></div>
-    <div></div>
-  </div>
-</section>
+<div class="band"></div>
 
-<div id="some">
-    <p>akdalsd</p>
+<div class="layout">
+  <aside class="sidebar">
+    <h2>Products</h2>
+    <ul id="categories">
+      <li data-cat="shampoo" class="active">&gt; Shampoo</li>
+      <li data-cat="conditioner">&gt; Conditioner</li>
+    </ul>
+  </aside>
+
+  <main class="content">
+    <div class="grid" id="grid"></div>
+  </main>
 </div>
 
-
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" id="closeBtn" aria-label="Close">&times;</button>
+    <div class="modal-image" id="mImage">No image yet</div>
+    <div class="modal-info">
+      <h3 id="mTitle"></h3>
+      <p id="mDesc"></p>
+      <button class="buy" id="buyBtn">Buy</button>
+      <div class="shops" id="shops"></div>
+    </div>
+  </div>
+</div>
+ 
 <footer>
   <div class="row">
     <div><h4>Help &amp; Info</h4><p>FAQ</p><p>Shipping</p><p>Returns</p><p>Track Orders</p></div>
@@ -101,6 +183,92 @@
   </div>
   <p class="footer-name">Black Beauty</p>
 </footer>
+
+ <script>
+ 
+  const products = [
+    {
+      name: "Black Beauty 2-in-1 Shampoo with Conditioner", cat: "shampoo", image: "",
+      desc: "A 2-in-1 formula that cleanses and conditions your hair in a single step.",
+      shops: { shopee: "https://shopee.ph", tiktok: "https://www.tiktok.com/shop", lazada: "https://www.lazada.com.ph" }
+    },
+    {
+      name: "Black Beauty Conditioner", cat: "conditioner", image: "",
+      desc: "A conditioner for soft, smooth, manageable hair.",
+      shops: { shopee: "https://shopee.ph", tiktok: "https://www.tiktok.com/shop", lazada: "https://www.lazada.com.ph" }
+    }
+  ];
+
+  const grid = document.getElementById('grid');
+  const items = document.querySelectorAll('#categories li');
+  let current = 'shampoo';
+
+  function render() {
+    const list = products.filter(p => p.cat === current);
+    if (!list.length) {
+      grid.innerHTML = '<p class="empty">No products yet.</p>';
+      return;
+    }
+    grid.innerHTML = list.map(p => `
+      <div class="card" data-index="${products.indexOf(p)}">
+        <div class="image">${imgHTML(p)}</div>
+        <h3>${p.name}</h3>
+      </div>`).join('');
+  }
+
+  function imgHTML(p) {
+    return p.image ? `<img src="${p.image}" alt="${p.name}" style="max-width:100%;max-height:100%">` : 'No image yet';
+  }
+
+  const modal  = document.getElementById('modal');
+  const mTitle = document.getElementById('mTitle');
+  const mDesc  = document.getElementById('mDesc');
+  const mImage = document.getElementById('mImage');
+  const buyBtn = document.getElementById('buyBtn');
+  const shops  = document.getElementById('shops');
+  let selected = null;
+
+  function openModal(p) {
+    selected = p;
+    mTitle.textContent = p.name;
+    mDesc.textContent = p.desc;
+    mImage.innerHTML = imgHTML(p);
+    shops.classList.remove('show');
+    shops.innerHTML = '';
+    buyBtn.style.display = '';
+    modal.classList.add('open');
+  }
+
+  function closeModal() { modal.classList.remove('open'); }
+
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.card');
+    if (card) openModal(products[card.dataset.index]);
+  });
+
+  buyBtn.addEventListener('click', () => {
+    const s = selected.shops;
+    shops.innerHTML = `
+      <div class="label">Choose where to buy:</div>
+      <a class="shop-btn shopee" href="${s.shopee}" target="_blank" rel="noopener">Shopee</a>
+      <a class="shop-btn tiktok" href="${s.tiktok}" target="_blank" rel="noopener">TikTok Shop</a>
+      <a class="shop-btn lazada" href="${s.lazada}" target="_blank" rel="noopener">Lazada</a>`;
+    shops.classList.add('show');
+    buyBtn.style.display = 'none';
+  });
+
+  document.getElementById('closeBtn').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  items.forEach(li => li.addEventListener('click', () => {
+    current = li.dataset.cat;
+    items.forEach(i => i.classList.toggle('active', i === li));
+    render();
+  }));
+
+  render();
+</script>
 
 </body>
 </html>
