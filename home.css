@@ -1,0 +1,300 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    color: #222;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h2 {
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+section {
+    padding: 50px 40px;
+}
+
+/* HEADER */
+header {
+    background: rgba(160, 142, 30, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.logo {
+    height: 50px;
+    width: 110px;
+    object-fit: contain;
+}
+
+nav {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+nav a {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin: 0 12px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.spacer {
+    display: none;
+}
+
+/* ACCOUNT ICON */
+.account {
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.account i {
+    font-size: 30px;
+    color: black;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.account i:hover {
+    color: white;
+}
+
+/* HERO */
+
+.shantell-sans-regular {
+  font-family: "Shantell Sans", cursive;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "BNCE" 0, "INFM" 0, "SPAC" 0;
+}
+
+.hero {
+    background-image: url("IMAGES/Untitled Design.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    aspect-ratio: 1440 / 978;
+    padding-top: 110px;
+}
+
+.hero h1 {
+    font-weight: normal;
+    font-size: 64px;
+    text-transform: uppercase;
+}
+
+.hero p {
+    font-size: 30px;
+    margin: 5px 0 20px;
+}
+
+.hero a {
+    font-size: 30px;
+
+}
+
+.hero a:hover {
+    color: white;
+}
+
+.order {
+  border: 1px solid black;
+  border-radius: 40px;
+  padding: 6px 30px;
+  display: inline-block;
+  color: black;
+  background-color: transparent;
+  text-decoration: none; 
+  cursor: pointer;       
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.order:hover {
+  background-color: black;
+  color: white;
+}
+
+
+/* Handles the overall position of the whole group */
+.perks-list {
+    margin-top: 450px;
+    margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Controls the exact space between the two rows */
+}
+
+/* Handles each individual circle + text row */
+.perks {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    text-align: left;
+    font-size: 50px;
+    line-height: 1.4;
+}
+
+.circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+
+/* BEST SELLERS */
+.best {
+    background: white;
+}
+
+.row {
+    display: flex;
+    gap: 25px;
+}
+
+.product {
+  flex: 1;
+  border: 1px solid black;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.product button {
+    background: #A08E1E;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 22px;
+    margin-top: 12px;
+}
+
+/* INGREDIENTS */
+.ingredients {
+    background: #F1EBAD;
+}
+
+.ingredient {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.circle {
+    width: 55px;
+    height: 55px;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.ingredients .row {
+    margin-bottom: 25px;
+}
+
+.ingredient h3 {
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+/* JOURNAL */
+.journal {
+    background: white;
+}
+
+.row {
+    display: flex;
+    gap: 20px;
+}
+
+.post {
+    flex: 1;
+}
+
+.post .image {
+    height: 300px;
+    overflow: hidden; /* Keeps the image inside the 120px box */
+}
+
+.post .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops the image neatly to fit without distorting */
+    display: block;
+}
+
+/* FOOTER */
+footer {
+    background: black;
+    color: white;
+    padding: 40px;
+}
+
+footer .row {
+    font-size: 13px;
+}
+
+footer div {
+    flex: 1;
+}
+
+footer h4 {
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+footer p {
+    margin-bottom: 5px;
+}
+
+.footer-name {
+    text-align: center;
+    margin-top: 30px;
+    text-transform: uppercase;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 800px) {
+    .row {
+        flex-direction: column;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .spacer {
+        display: none;
+    }
+}
