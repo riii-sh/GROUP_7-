@@ -1,0 +1,335 @@
+/* ADMIN PAGE */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;   /* sidebar links glide to each section */
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    color: #222;
+    background: #F1EBAD;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* The sidebar and the main content sit side by side */
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    background: black;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    position: sticky;      /* stays on screen while you scroll */
+    top: 0;
+    height: 100vh;
+    align-self: flex-start;
+}
+
+.logo {
+    width: 110px;
+    height: 60px;
+    object-fit: contain;
+    align-self: center;
+}
+
+.role {
+    text-align: center;
+    text-transform: uppercase;
+    color: #B8A53A;
+    margin: 10px 0 30px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;   /* pushes Log Out to the bottom */
+}
+
+.sidebar nav a {
+    padding: 10px 12px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.sidebar nav a:hover {
+    background: #A08E1E;
+}
+
+.logout {
+    border: 1px solid #B8A53A;
+    border-radius: 30px;
+    padding: 8px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.logout:hover {
+    background: #B8A53A;
+    color: black;
+}
+
+/* MAIN CONTENT */
+.main {
+    flex: 1;
+    min-width: 0;   /* lets wide tables scroll instead of stretching the page */
+    padding: 40px;
+}
+
+.main h1 {
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+/* NUMBER CARDS */
+.cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    flex: 1;
+    background: white;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.card-label {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.card-number {
+    font-size: 32px;
+    margin-top: 8px;
+}
+
+/* PANELS (products, orders, customers, messages) */
+.panel {
+    background: white;
+    border: 1px solid black;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+
+.panel-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.panel h2 {
+    margin: 0;
+    font-size: 20px;
+    text-align: left;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+/* Search bar + button sit together on the right */
+.panel-tools {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search {
+    width: 220px;
+    padding: 8px 14px;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.search:focus {
+    outline: 2px solid #A08E1E;
+}
+
+/* TABLES */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px 10px;
+    border-bottom: 1px solid #ccc;
+    vertical-align: middle;
+}
+
+th {
+    background: #A08E1E;
+    color: white;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+/* PRODUCT THUMBNAILS */
+.product-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.thumb {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border: 1px solid #ccc;
+    background: white;
+    flex-shrink: 0;   /* keeps the picture from getting squished */
+}
+
+/* BUTTONS */
+button {
+    font-family: inherit;
+    font-size: 14px;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 18px;
+    cursor: pointer;
+}
+
+.add-btn {
+    background: #A08E1E;
+    color: white;
+}
+
+.edit-btn {
+    background: #F1EBAD;
+}
+
+.delete-btn {
+    background: #b00020;
+    color: white;
+}
+
+.update-btn {
+    background: black;
+    color: white;
+}
+
+.update-btn:hover {
+    background: #A08E1E;
+}
+
+select {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 5px 8px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-right: 6px;
+}
+
+/* ORDER STATUS LABELS */
+.status {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.pending {
+    background: #F1EBAD;
+}
+
+.shipped {
+    background: #B8A53A;
+}
+
+.delivered {
+    background: #2e7d32;
+    color: white;
+}
+
+/* MESSAGES */
+.message {
+    border: 1px solid #ccc;
+    padding: 15px 18px;
+    margin-bottom: 12px;
+}
+
+.message-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.message-date {
+    font-size: 14px;
+    color: #555;
+}
+
+.message-email {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.message-subject {
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* SMALL SCREENS */
+@media (max-width: 800px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        align-self: auto;
+    }
+
+    .sidebar nav {
+        flex: none;
+        margin-bottom: 20px;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .panel {
+        overflow-x: auto;
+    }
+
+    .search {
+        width: 100%;
+    }
+
+    .panel-tools {
+        width: 100%;
+    }
+}

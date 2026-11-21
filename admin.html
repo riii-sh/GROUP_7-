@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin - Black Beauty</title>
+
+    <!-- This page has its own CSS. It does not use home.css -->
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <img class="logo" src="IMAGES/327176067_856763338905141_3168379092967939775_n-removebg-preview.png" alt="Black Beauty logo">
+        <p class="role">Admin</p>
+
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#products">Products</a>
+            <a href="#orders">Orders</a>
+            <a href="#customers">Customers</a>
+            <a href="#messages">Messages</a>
+        </nav>
+
+        <a href="login.html" class="logout">Log Out</a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <h1 id="dashboard">Welcome back, Admin</h1>
+
+        <!-- NUMBER CARDS -->
+        <div class="cards">
+            <div class="card">
+                <p class="card-label">Total Orders</p>
+                <p class="card-number">5</p>
+            </div>
+
+            <div class="card">
+                <p class="card-label">Products</p>
+                <p class="card-number">4</p>
+            </div>
+
+            <div class="card">
+                <p class="card-label">Customers</p>
+                <p class="card-number">6</p>
+            </div>
+
+            <div class="card">
+                <p class="card-label">Sales</p>
+                <p class="card-number">&#8369;1,677</p>
+            </div>
+        </div>
+
+        <!-- PRODUCTS -->
+        <section class="panel" id="products">
+            <div class="panel-top">
+                <h2>Products</h2>
+                <div class="panel-tools">
+                    <input type="text" class="search" id="product-search"
+                           placeholder="Search products...">
+                    <button class="add-btn">Add Product</button>
+                </div>
+            </div>
+
+            <table id="product-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-cell">
+                            <img class="thumb" src="IMAGES/189BBeautyShmp_Cond120mLfront_939x939-removebg-preview.png" alt="">
+                            <span>Black Beauty 2-in-1 Shampoo with Conditioner (120mL)</span>
+                        </div>
+                    </td>
+                    <td>&#8369;189</td>
+                    <td>52</td>
+                    <td class="actions">
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-cell">
+                            <img class="thumb" src="IMAGES/189BBeautyShmp_Cond120mLfront_939x939-removebg-preview.png" alt="">
+                            <span>Black Beauty Shampoo</span>
+                        </div>
+                    </td>
+                    <td>&#8369;165</td>
+                    <td>30</td>
+                    <td class="actions">
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-cell">
+                            <img class="thumb" src="IMAGES/189BBeautyShmp_Cond120mLfront_939x939-removebg-preview.png" alt="">
+                            <span>Black Beauty Conditioner</span>
+                        </div>
+                    </td>
+                    <td>&#8369;175</td>
+                    <td>18</td>
+                    <td class="actions">
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="product-cell">
+                            <img class="thumb" src="IMAGES/189BBeautyShmp_Cond120mLfront_939x939-removebg-preview.png" alt="">
+                            <span>Black Beauty Hair Serum</span>
+                        </div>
+                    </td>
+                    <td>&#8369;210</td>
+                    <td>25</td>
+                    <td class="actions">
+                        <button class="edit-btn">Edit</button>
+                        <button class="delete-btn">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- ORDERS -->
+        <section class="panel" id="orders">
+            <div class="panel-top">
+                <h2>Orders</h2>
+                <div class="panel-tools">
+                    <input type="text" class="search" id="order-search"
+                           placeholder="Search orders...">
+                </div>
+            </div>
+
+            <table id="order-table">
+                <tr>
+                    <th>Order #</th>
+                    <th>Customer</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Update Status</th>
+                </tr>
+                <tr>
+                    <td>#1005</td>
+                    <td>Chance Furog</td>
+                    <td>&#8369;189</td>
+                    <td><span class="status pending">Pending</span></td>
+                    <td class="actions">
+                        <select>
+                            <option value="Pending" selected>Pending</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                        </select>
+                        <button class="update-btn">Update</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#1004</td>
+                    <td>Khalex Lustanas</td>
+                    <td>&#8369;378</td>
+                    <td><span class="status pending">Pending</span></td>
+                    <td class="actions">
+                        <select>
+                            <option value="Pending" selected>Pending</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                        </select>
+                        <button class="update-btn">Update</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#1003</td>
+                    <td>Romina Sanchez</td>
+                    <td>&#8369;189</td>
+                    <td><span class="status shipped">Shipped</span></td>
+                    <td class="actions">
+                        <select>
+                            <option value="Pending">Pending</option>
+                            <option value="Shipped" selected>Shipped</option>
+                            <option value="Delivered">Delivered</option>
+                        </select>
+                        <button class="update-btn">Update</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#1002</td>
+                    <td>Peter Umbaro</td>
+                    <td>&#8369;567</td>
+                    <td><span class="status delivered">Delivered</span></td>
+                    <td class="actions">
+                        <select>
+                            <option value="Pending">Pending</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered" selected>Delivered</option>
+                        </select>
+                        <button class="update-btn">Update</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>#1001</td>
+                    <td>Martin Vinas</td>
+                    <td>&#8369;354</td>
+                    <td><span class="status delivered">Delivered</span></td>
+                    <td class="actions">
+                        <select>
+                            <option value="Pending">Pending</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Delivered" selected>Delivered</option>
+                        </select>
+                        <button class="update-btn">Update</button>
+                    </td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- CUSTOMERS -->
+        <section class="panel" id="customers">
+            <div class="panel-top">
+                <h2>Customers</h2>
+                <div class="panel-tools">
+                    <input type="text" class="search" id="customer-search"
+                           placeholder="Search customers...">
+                </div>
+            </div>
+
+            <table id="customer-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Date Registered</th>
+                </tr>
+                <tr>
+                    <td>Chance Furog</td>
+                    <td>chance.furog@example.com</td>
+                    <td>Nov 19, 2026</td>
+                </tr>
+                <tr>
+                    <td>Khalex Lustanas</td>
+                    <td>khalex.lustanas@example.com</td>
+                    <td>Nov 15, 2026</td>
+                </tr>
+                <tr>
+                    <td>Romina Sanchez</td>
+                    <td>romina.sanchez@example.com</td>
+                    <td>Nov 10, 2026</td>
+                </tr>
+                <tr>
+                    <td>Peter Umbaro</td>
+                    <td>peter.umbaro@example.com</td>
+                    <td>Nov 4, 2026</td>
+                </tr>
+                <tr>
+                    <td>Martin Vinas</td>
+                    <td>martin.vinas@example.com</td>
+                    <td>Oct 28, 2026</td>
+                </tr>
+                <tr>
+                    <td>Alexander Pahayahay</td>
+                    <td>alexander.pahayahay@example.com</td>
+                    <td>Oct 20, 2026</td>
+                </tr>
+            </table>
+        </section>
+
+        <!-- MESSAGES -->
+        <section class="panel" id="messages">
+            <div class="panel-top">
+                <h2>Messages</h2>
+            </div>
+
+            <div class="message">
+                <div class="message-top">
+                    <strong>Chance Furog</strong>
+                    <span class="message-date">Nov 20, 2026</span>
+                </div>
+                <p class="message-email">chance.furog@example.com</p>
+                <p class="message-subject">Is the shampoo good for dry hair?</p>
+                <p>Hi! I have really dry hair. Will the 2-in-1 shampoo with conditioner work for me?</p>
+            </div>
+
+            <div class="message">
+                <div class="message-top">
+                    <strong>Khalex Lustanas</strong>
+                    <span class="message-date">Nov 18, 2026</span>
+                </div>
+                <p class="message-email">khalex.lustanas@example.com</p>
+                <p class="message-subject">Order #1004 delivery</p>
+                <p>Good day! When will my order be shipped? I ordered two bottles on Monday.</p>
+            </div>
+
+            <div class="message">
+                <div class="message-top">
+                    <strong>Romina Sanchez</strong>
+                    <span class="message-date">Nov 12, 2026</span>
+                </div>
+                <p class="message-email">romina.sanchez@example.com</p>
+                <p class="message-subject">Thank you!</p>
+                <p>My hair feels so smooth after one week. I will order again soon.</p>
+            </div>
+
+            <div class="message">
+                <div class="message-top">
+                    <strong>Peter Umbaro</strong>
+                    <span class="message-date">Nov 6, 2026</span>
+                </div>
+                <p class="message-email">peter.umbaro@example.com</p>
+                <p class="message-subject">Do you sell in stores?</p>
+                <p>Hello, are your products also available in physical stores near Quezon City?</p>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+
+</body>
+</html>
