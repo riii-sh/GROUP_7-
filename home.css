@@ -98,6 +98,7 @@ nav a:hover {
 
 .hero {
     background-image: url("IMAGES/Untitled Design.png");
+    background-attachment: fixed; 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
