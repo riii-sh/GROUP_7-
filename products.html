@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Black Beauty</title>
+<title>Products | Black Beauty Philippines</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Times New Roman', serif; color: #222; }
@@ -152,8 +152,10 @@
   <aside class="sidebar">
     <h2>Products</h2>
     <ul id="categories">
-      <li data-cat="shampoo" class="active">&gt; Shampoo</li>
-      <li data-cat="conditioner">&gt; Conditioner</li>
+      <li data-cat="shampoo" class="active">Shampoo</li>
+      <li data-cat="conditioner">Conditioner</li>
+      <li data-cat="hair treatment">Hair Treatment</li>
+      <li data-cat="cuticle coats">Cuticle Coats</li>
     </ul>
   </aside>
 
@@ -188,15 +190,88 @@
  <script>
  
   const products = [
+    // SHAMPOO
     {
-      name: "Black Beauty 2-in-1 Shampoo with Conditioner", cat: "shampoo", image: "",
+      name: "Black Beauty 2-in-1 Shampoo with Conditioner", cat: "shampoo", image: "IMAGES/BBSWC.webp",
       desc: "A 2-in-1 formula that cleanses and conditions your hair in a single step.",
-      shops: { shopee: "https://shopee.ph", tiktok: "https://www.tiktok.com/shop", lazada: "https://www.lazada.com.ph" }
+      shops: {
+        shopee: "https://shopee.ph/Black-Beauty-2-in-1-Shampoo-w-Conditioner-500mL-i.267163785.56112636346",
+        tiktok: "https://shop.tiktok.com/ph/pdp/black-beauty-2-in-1-shampoo-conditioner-500ml-moisturizes-hair/1736200545323091536",
+        lazada: "https://www.lazada.com.ph/products/black-beauty-2-in-1-shampoo-w-conditioner-500ml-i15532619065.html"
+      }
     },
+
     {
-      name: "Black Beauty Conditioner", cat: "conditioner", image: "",
+      name: "Black Beauty Gold Shampoo", cat: "shampoo", image: "IMAGES/BBGS.webp",
+      desc: "A 2-in-1 formula that cleanses and conditions your hair in a single step.",
+      shops: {
+        shopee: "https://shopee.ph/Black-Beauty-Gold-Shampoo-500mL-i.267163785.51162638651",
+        tiktok: "https://shop.tiktok.com/ph/pdp/black-beauty-gold-shampoo-revitalize-weak-hair-stimulate-growth-reduce-hair-fall/1729620713865840697",
+        lazada: "https://www.lazada.com.ph/shop-hair-care/black-beauty/"
+      }
+    },
+
+    {
+      name: "Black Beauty Crystal Anti-Dandruff Shampoo", cat: "shampoo", image: "IMAGES/BBCAS.webp",
+      desc: "A 2-in-1 formula that cleanses and conditions your hair in a single step.",
+      shops: {
+        shopee: "https://shopee.ph/shop/267163785",
+        tiktok: "https://www.tiktok.com/shop",
+        lazada: "https://www.lazada.com.ph/products/black-beauty-crystal-anti-dandruff-shampoo-i347910929-s133602979338.html"
+      }
+    },
+
+    // CONDITIONER
+    {
+      name: "Black Beauty Silk Conditioner", cat: "conditioner", image: "IMAGES/BBSC.jpg",
       desc: "A conditioner for soft, smooth, manageable hair.",
-      shops: { shopee: "https://shopee.ph", tiktok: "https://www.tiktok.com/shop", lazada: "https://www.lazada.com.ph" }
+      shops: {
+        shopee: "https://shopee.ph/Black-Beauty-Silk-Conditioner-500mL-i.267163785.45612665109",
+        tiktok: "https://www.tiktok.com/shop",
+        lazada: "https://www.lazada.com.ph/products/black-beauty-silk-conditioner-120ml-i5022983192.html"
+      }
+    },
+
+    // HAIR TREATMENT
+    {
+      name: "Black Beauty Hot Oil with Keratin", cat: "hair treatment", image: "IMAGES/BBHOK.jpg",
+      desc: "A conditioner for soft, smooth, manageable hair.",
+      shops: {
+        shopee: "https://shopee.ph/shop/267163785",
+        tiktok: "https://shop.tiktok.com/ph/pdp/1737182096691332153",
+        lazada: "https://www.lazada.com.ph/products/pdp-i15607522087.html"
+      }
+    },
+
+    // CUTICLE COATS
+    {
+      name: "Black Beauty Fix Cuticle Coat Hair Serum", cat: "cuticle coats", image: "IMAGES/BBFCCHS.jpg",
+      desc: "A conditioner for soft, smooth, manageable hair.",
+      shops: {
+        shopee: "https://shopee.ph/Black-Beauty-Cuticle-Coat-Fix-30mL-i.267163785.44131913058",
+        tiktok: "https://www.tiktok.com/shop",
+        lazada: "https://www.lazada.com.ph/shop-hair-care/black-beauty/"
+      }
+    },
+
+    {
+      name: "Black Beauty Protect Hair Moisturizer", cat: "cuticle coats", image: "IMAGES/BBPHM.jpg",
+      desc: "A conditioner for soft, smooth, manageable hair.",
+      shops: {
+        shopee: "https://shopee.ph/shop/267163785",
+        tiktok: "https://www.tiktok.com/shop",
+        lazada: "https://www.lazada.com.ph/shop-hair-care/black-beauty/"
+      }
+    },
+
+    {
+      name: "Black Beauty Shine Cuticle Hair Serum", cat: "cuticle coats", image: "IMAGES/BBSHP.jpg",
+      desc: "A conditioner for soft, smooth, manageable hair.",
+      shops: {
+        shopee: "https://shopee.ph/Black-Beauty-Cuticle-Coat-Shine-30mL-i.267163785.56362636924",
+        tiktok: "https://shop.tiktok.com/ph/pdp/black-beauty-cuticle-coat-shine-30ml-smooths-frizz-adds-shine/1736203443757680208",
+        lazada: "https://www.lazada.com.ph/shop-hair-care/black-beauty/"
+      }
     }
   ];
 
@@ -273,3 +348,4 @@
 
 </body>
 </html>
+
