@@ -97,8 +97,7 @@ nav a:hover {
 }
 
 .hero {
-    background-image: url("IMAGES/Untitled Design.png");
-    background-attachment: fixed; 
+    background-image: url("IMAGES/Brilliant Hair.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -145,31 +144,6 @@ nav a:hover {
 }
 
 
-/* Handles the overall position of the whole group */
-.perks-list {
-    margin-top: 450px;
-    margin-left: 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* Controls the exact space between the two rows */
-}
-
-/* Handles each individual circle + text row */
-.perks {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    text-align: left;
-    font-size: 50px;
-    line-height: 1.4;
-}
-
-.circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
 
 
 /* BEST SELLERS */
