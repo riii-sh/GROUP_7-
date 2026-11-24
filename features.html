@@ -8,41 +8,44 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Times New Roman', serif; color: #222; }
   a { color: inherit; text-decoration: none; }
-  h2 { font-weight: normal; text-transform: uppercase; text-align: center; margin-bottom: 30px; }
-  section { padding: 50px 40px; }
+  h2 { font-weight: bold; text-transform: uppercase; text-align: left; margin-bottom: 25px; font-size: 20px; }
+  section { padding: 40px; }
 
   /* HEADER */
   header { background: #f7f7f5; display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; }
   .logo { height: 50px; width: 110px; object-fit: contain; }
-  nav a { text-transform: uppercase; font-size: 14px; margin: 0 12px; }
+  nav a { text-transform: uppercase; font-size: 14px; margin: 0 12px; font-weight: bold; }
   nav a.active { border-bottom: 2px solid #a08e1e; padding-bottom: 5px; }
   nav a:hover { text-decoration: underline; }
   .spacer { width: 110px; }
 
-  /* PROMO BANNER (Free Trip to Boracay style) */
-  .promo { background: #cec070; display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 40px; }
-  .promo-text { flex: 1; }
-  .promo-text h1 { font-weight: normal; font-size: 34px; text-transform: uppercase; margin-bottom: 10px; }
-  .promo-text p { font-size: 16px; font-style: italic; }
-  .promo-image { flex: 1; max-width: 320px; }
-  .promo-image img { width: 100%; height: 260px; object-fit: cover; border: 1px solid black; }
+  /* GOLD DIVIDER BANNER (matches the plain gradient strip in the reference) */
+  .gold-banner { height: 45px; background: linear-gradient(90deg, #d8cc85, #a08e1e); }
+
+  /* CARD GRID — shared style for review + article cards */
+  .row { display: flex; gap: 25px; flex-wrap: wrap; align-items: flex-start; }
+  .card { flex: 1; min-width: 230px; max-width: 270px; background: #fff; border: 1px solid #a08e1e; padding: 15px; text-align: center; }
 
   /* REVIEWS */
-  .reviews { background: white; }
-  .row { display: flex; gap: 25px; flex-wrap: wrap; }
-  .review-card { flex: 1; min-width: 220px; border: 1px solid black; padding: 20px; text-align: left; }
-  .review-card .stars { color: #A08E1E; font-size: 18px; margin-bottom: 10px; }
-  .review-card p.quote { font-size: 15px; font-style: italic; margin-bottom: 12px; line-height: 1.5; }
-  .review-card .reviewer { font-size: 13px; text-transform: uppercase; }
+  .review-section { display: flex; justify-content: center; }
+  .reviews { background: #ffffff;}
+  .review-card .stars { color: #dab642; font-size: 18px; margin-bottom: 10px; }
+  .review-card .review-img { width: 100%; height: 280px; object-fit: cover; margin-bottom: 12px; }
+  .review-card p.quote { font-size: 14px; font-style: italic; margin-bottom: 12px; line-height: 1.5; text-align: left; }
+  .review-card .reviewer { font-size: 13px; text-transform: uppercase; font-weight: bold; }
 
   /* ARTICLES */
-  .articles-features { background: #F1EBAD; }
-  .article-card { flex: 1; min-width: 220px; background: white; border: 1px solid black; }
-  .article-card .image { height: 140px; background-size: cover; background-position: center; }
-  .article-card .content { padding: 15px; text-align: left; }
-  .article-card h3 { font-weight: normal; text-transform: uppercase; font-size: 16px; margin-bottom: 8px; }
-  .article-card p { font-size: 13px; line-height: 1.5; margin-bottom: 12px; }
-  .article-card .read-more { background: #A08E1E; color: white; border: none; border-radius: 20px; padding: 6px 18px; font-size: 12px; display: inline-block; }
+  .article-section {display: flex; justify-content: center;}
+  .articles-features { background: #fff; }
+  .article-card .image { height: 280px; background-size: cover; background-position: center; margin-bottom: 12px; }
+  .article-card h3 { font-weight: bold; text-transform: uppercase; font-size: 15px; margin-bottom: 8px; }
+  .article-card p { font-size: 13px; line-height: 1.5; margin-bottom: 14px; text-align: left; }
+  .pill-btn { display: inline-block; background: #fff; color: #222; border: 1px solid #a08e1e; border-radius: 20px; padding: 6px 22px; font-size: 13px; }
+  .pill-btn:hover { background: #f7f2db; }
+
+  /* BORDER */
+
+  .border {height: 50px; width: 100%; background: linear-gradient(90deg, #d8cc85, #a08e1e); border: solid black 2px;}
 
   /* FOOTER */
   footer { background: black; color: white; padding: 40px; }
@@ -53,10 +56,9 @@
   .footer-name { text-align: center; margin-top: 30px; text-transform: uppercase; }
 
   @media (max-width: 800px) {
-    .row { flex-direction: column; }
     header { flex-direction: column; gap: 10px; }
     .spacer { display: none; }
-    .promo { flex-direction: column; text-align: center; }
+    .card { max-width: 100%; }
   }
 </style>
 </head>
@@ -74,69 +76,64 @@
   <div class="spacer"></div>
 </header>
 
-<!-- PROMO BANNER -->
-<section class="promo">
-  <div class="promo-text">
-    <h1>Loved by thousands</h1>
-    <p>Real results, real reviews — see why Black Beauty is becoming a staple in every routine.</p>
-  </div>
-  <div class="promo-image">
-    <img src="IMAGES/1200_PNG-11SH500P23_RVB.webp" alt="Shiny hair">
-  </div>
-</section>
+<!-- GOLD BANNER -->
+<div class="gold-banner"></div>
 
 <!-- REVIEWS -->
-<section class="reviews">
-  <h2>What Our Customers Say</h2>
-  <div class="row">
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p class="quote">"My hair has never felt this soft. I noticed a difference after just two weeks of using the shampoo and conditioner together."</p>
-      <div class="reviewer">— Maria S.</div>
+<div class="review-section">
+  <section class="reviews">
+    <h2>What Our Customers Say</h2>
+    <div class="row">
+      <div class="card review-card">
+        <img class="review-img" src="IMAGES/model1.jpg" alt="Customer with shiny hair">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"My hair has never felt this soft. I noticed a difference after just two weeks of using the shampoo and conditioner together."</p>
+        <div class="reviewer">— Maria S.</div>
+      </div>
+      <div class="card review-card">
+        <img class="review-img" src="IMAGES/model2.jpg" alt="Customer with shiny hair">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"I was skeptical at first but the hair growth results are real. My hairline has visibly filled in after a couple of months."</p>
+        <div class="reviewer">— Jenna L.</div>
+      </div>
+      <div class="card review-card">
+        <img class="review-img" src="IMAGES/model3.jpg" alt="Customer with shiny hair">
+        <div class="stars">★★★★☆</div>
+        <p class="quote">"Smells amazing and leaves my hair shiny without feeling greasy. Will definitely repurchase."</p>
+        <div class="reviewer">— Carla D.</div>
+      </div>
     </div>
-    <div class="review-card">
-      <div class="stars">★★★★★</div>
-      <p class="quote">"I was skeptical at first but the hair growth results are real. My hairline has visibly filled in after a couple of months."</p>
-      <div class="reviewer">— Jenna L.</div>
-    </div>
-    <div class="review-card">
-      <div class="stars">★★★★☆</div>
-      <p class="quote">"Smells amazing and leaves my hair shiny without feeling greasy. Will definitely repurchase."</p>
-      <div class="reviewer">— Carla D.</div>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
+
+<div class="border"></div>
 
 <!-- ARTICLES -->
-<section class="articles-features">
-  <h2>Articles &amp; Insights</h2>
-  <div class="row">
-    <div class="article-card">
-      <div class="image" style="background-image:url('IMAGES/article1.jpg');"></div>
-      <div class="content">
+ <div class="article-section">
+  <section class="articles-features">
+    <h2>Articles &amp; Insights</h2>
+    <div class="row">
+      <div class="card article-card">
+        <div class="image" style="background-image:url('IMAGES/article1.jpg');"></div>
         <h3>5 Steps to Radiant Shine</h3>
         <p>A simple weekly routine using Black Beauty products to keep your hair looking salon-fresh all week long.</p>
-        <a class="read-more" href="#">Read More</a>
+        <a class="pill-btn" href="#">Read More</a>
       </div>
-    </div>
-    <div class="article-card">
-      <div class="image" style="background-image:url('IMAGES/article2.jpg');"></div>
-      <div class="content">
+      <div class="card article-card">
+        <div class="image" style="background-image:url('IMAGES/article2.jpg');"></div>
         <h3>The Science of Hair Growth</h3>
         <p>What actually causes hair thinning, and how the ingredients in Black Beauty target it at the root.</p>
-        <a class="read-more" href="#">Read More</a>
+        <a class="pill-btn" href="#">Read More</a>
       </div>
-    </div>
-    <div class="article-card">
-      <div class="image" style="background-image:url('IMAGES/article3.jpg');"></div>
-      <div class="content">
+      <div class="card article-card">
+        <div class="image" style="background-image:url('IMAGES/article3.jpg');"></div>
         <h3>Real Customers, Real Results</h3>
         <p>A roundup of before-and-after stories from customers who've made Black Beauty part of their routine.</p>
-        <a class="read-more" href="#">Read More</a>
+        <a class="pill-btn" href="#">Read More</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <footer>
   <div class="row">
