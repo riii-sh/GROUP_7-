@@ -18,27 +18,7 @@
   nav a:hover { text-decoration: underline; }
   .spacer { width: 110px; }
 
-  .hero { background: #e8ebe4; text-align: center; height: 50px; border: 2px;}
-  .hero h1 { font-weight: normal; font-size: 64px; text-transform: uppercase; }
-  .hero p { font-size: 22px; margin: 5px 0 20px; }
-  .order { border: 1px solid black; border-radius: 30px; padding: 6px 80px; display: inline-block; }
-  .perks { text-align: left; margin-top: 60px; font-size: 22px; line-height: 2; }
-
-  .best { background: white; }
   .row { display: flex; gap: 25px; }
-  .product { flex: 1; border: 1px solid black; padding: 15px; text-align: center; }
-   
-  .product button { background: #A08E1E; color: white; border: none; border-radius: 20px; padding: 6px 22px; margin-top: 12px; }
-
-  .ingredients { background: #F1EBAD; }
-  .ingredient { flex: 1; display: flex; align-items: center; gap: 20px; }
-  .circle { width: 55px; height: 55px; border: 1px solid black; border-radius: 50%; }
-  .ingredients .row { margin-bottom: 25px; }
-  .ingredient h3 { font-weight: normal; text-transform: uppercase; font-size: 16px; }
-
-  .journal { background: white; }
-  .post { flex: 1; }
-  .post .image { height: 120px; }
 
   footer { background: black; color: white; padding: 40px; }
   footer .row { font-size: 13px; }
@@ -47,12 +27,13 @@
   footer p { margin-bottom: 5px; }
   .footer-name { text-align: center; margin-top: 30px; text-transform: uppercase; }
 
-  .some {background: black; display: flex; justify-content: center; height: 10px;}
-
- .band {
+  .band {
     height: 34px;
     background: linear-gradient(90deg, #8a7410 0%, #cdbb62 30%, #f0e49a 50%, #cdbb62 70%, #8a7410 100%);
   }
+
+  /* ---------- CATEGORY FILTER (radio buttons, hidden) ---------- */
+  .cat-radio { position: absolute; opacity: 0; pointer-events: none; }
 
   .layout { display: flex; flex: none; min-height: calc(100vh - 117px); }
 
@@ -63,16 +44,31 @@
     margin-bottom: 10px;
   }
   .sidebar ul { list-style: none; }
-  .sidebar li {
-    text-align: center; font-size: 14px; padding: 3px 0; margin: 0 4px 4px;
+  .sidebar li { margin: 0 4px 4px; }
+  .sidebar label {
+    display: block; text-align: center; font-size: 14px; padding: 3px 0;
     cursor: pointer; border: 1px solid transparent; user-select: none;
   }
-  .sidebar li:hover { background: #e4e4e4; }
-  .sidebar li.active { background: #dcdcdc; border-color: #a08e1e; }
-  .sidebar li span { display: inline-block; width: 100%; padding-left: 0; }
+  .sidebar label:hover { background: #e4e4e4; }
+
+  /* highlight the active category */
+  #cat-shampoo:checked        ~ .layout label[for="cat-shampoo"],
+  #cat-conditioner:checked    ~ .layout label[for="cat-conditioner"],
+  #cat-hair-treatment:checked ~ .layout label[for="cat-hair-treatment"],
+  #cat-cuticle-coats:checked  ~ .layout label[for="cat-cuticle-coats"] {
+    background: #dcdcdc; border-color: #a08e1e;
+  }
 
   .content { flex: 1; padding: 14px 16px; background: #fff; }
   .grid { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; }
+
+  /* cards are hidden unless their category is selected */
+  .card { display: none; }
+  #cat-shampoo:checked        ~ .layout .c-shampoo,
+  #cat-conditioner:checked    ~ .layout .c-conditioner,
+  #cat-hair-treatment:checked ~ .layout .c-hair-treatment,
+  #cat-cuticle-coats:checked  ~ .layout .c-cuticle-coats { display: block; }
+
   .card {
     width: 190px; background: #e0d48c; border: 2px solid #b8a02a; border-radius: 8px;
     padding: 8px; cursor: pointer; transition: transform .15s, box-shadow .15s;
@@ -83,21 +79,27 @@
     display: flex; align-items: center; justify-content: center;
     color: #aaa; font-size: 12px;
   }
+  .card .image img, .modal-image img { max-width: 100%; max-height: 100%; }
   .card h3 { font-weight: normal; font-size: 14px; line-height: 1.2; margin-top: 10px; padding-bottom: 4px; }
-  .empty { font-size: 14px; color: #777; padding: 14px; }
 
+  /* ---------- MODAL (opened with :target) ---------- */
   .modal {
     display: none; position: fixed; inset: 0; z-index: 100;
     background: rgba(0,0,0,.55); align-items: center; justify-content: center; padding: 16px;
   }
-  .modal.open { display: flex; }
+  .modal:target,
+  .modal:has(.shops:target) { display: flex; }
+
+  /* clicking the dark backdrop closes the modal */
+  .backdrop { position: absolute; inset: 0; }
+
   .modal-box {
     position: relative; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto;
     background: #e0d48c; border: 3px solid #b8a02a; border-radius: 12px; padding: 18px;
     display: flex; gap: 18px;
   }
   .close {
-    position: absolute; top: 4px; right: 10px; background: none; border: none;
+    position: absolute; top: 4px; right: 10px;
     font-size: 26px; cursor: pointer; color: #222; line-height: 1;
   }
   .modal-image {
@@ -108,12 +110,15 @@
   .modal-info h3 { font-weight: normal; font-size: 20px; margin: 4px 0 8px; }
   .modal-info p { font-size: 14px; line-height: 1.5; margin-bottom: 14px; }
   .buy {
-    background: #A08E1E; color: white; border: none; border-radius: 20px;
+    display: inline-block; background: #A08E1E; color: white; border: none; border-radius: 20px;
     padding: 8px 34px; font-family: inherit; font-size: 15px; cursor: pointer;
   }
   .buy:hover { background: #8a7a15; }
+
+  /* "Buy" link points to #pX-shops; that reveals the store buttons and hides Buy */
   .shops { display: none; margin-top: 16px; }
-  .shops.show { display: block; }
+  .shops:target { display: block; }
+  .modal:has(.shops:target) .buy { display: none; }
   .shops .label { font-size: 13px; margin-bottom: 8px; }
   .shop-btn {
     display: block; text-align: center; margin-bottom: 8px; padding: 8px 12px;
@@ -128,6 +133,8 @@
     .row { flex-direction: column; }
     header { flex-direction: column; gap: 10px; }
     .spacer { display: none; }
+    .modal-box { flex-direction: column; }
+    .modal-image { width: 100%; }
   }
 </style>
 </head>
@@ -148,35 +155,224 @@
 
 <div class="band"></div>
 
+<!-- Category radios (must come BEFORE .layout so CSS can use the ~ selector) -->
+<input type="radio" name="cat" id="cat-shampoo" class="cat-radio" checked>
+<input type="radio" name="cat" id="cat-conditioner" class="cat-radio">
+<input type="radio" name="cat" id="cat-hair-treatment" class="cat-radio">
+<input type="radio" name="cat" id="cat-cuticle-coats" class="cat-radio">
+
 <div class="layout">
   <aside class="sidebar">
     <h2>Products</h2>
-    <ul id="categories">
-      <li data-cat="shampoo" class="active">Shampoo</li>
-      <li data-cat="conditioner">Conditioner</li>
-      <li data-cat="hair treatment">Hair Treatment</li>
-      <li data-cat="cuticle coats">Cuticle Coats</li>
+    <ul>
+      <li><label for="cat-shampoo">Shampoo</label></li>
+      <li><label for="cat-conditioner">Conditioner</label></li>
+      <li><label for="cat-hair-treatment">Hair Treatment</label></li>
+      <li><label for="cat-cuticle-coats">Cuticle Coats</label></li>
     </ul>
   </aside>
 
   <main class="content">
-    <div class="grid" id="grid"></div>
+    <div class="grid">
+
+      <!-- SHAMPOO -->
+      <a class="card c-shampoo" href="#p1">
+        <div class="image"><img src="IMAGES/BBSWC.webp" alt="Black Beauty 2-in-1 Shampoo with Conditioner"></div>
+        <h3>Black Beauty 2-in-1 Shampoo with Conditioner</h3>
+      </a>
+      <a class="card c-shampoo" href="#p2">
+        <div class="image"><img src="IMAGES/BBGS.webp" alt="Black Beauty Gold Shampoo"></div>
+        <h3>Black Beauty Gold Shampoo<br><br></h3>
+      </a>
+      <a class="card c-shampoo" href="#p3">
+        <div class="image"><img src="IMAGES/BBCAS.webp" alt="Black Beauty Crystal Anti-Dandruff Shampoo"></div>
+        <h3>Black Beauty Crystal Anti-Dandruff Shampoo</h3>
+      </a>
+
+      <!-- CONDITIONER -->
+      <a class="card c-conditioner" href="#p4">
+        <div class="image"><img src="IMAGES/BBSC.jpg" alt="Black Beauty Silk Conditioner"></div>
+        <h3>Black Beauty Silk Conditioner</h3>
+      </a>
+
+      <!-- HAIR TREATMENT -->
+      <a class="card c-hair-treatment" href="#p5">
+        <div class="image"><img src="IMAGES/BBHOK.jpg" alt="Black Beauty Hot Oil with Keratin"></div>
+        <h3>Black Beauty Hot Oil with Keratin</h3>
+      </a>
+
+      <!-- CUTICLE COATS -->
+      <a class="card c-cuticle-coats" href="#p6">
+        <div class="image"><img src="IMAGES/BBFCCHS.jpg" alt="Black Beauty Fix Cuticle Coat Hair Serum"></div>
+        <h3>Black Beauty Fix Cuticle Coat Hair Serum</h3>
+      </a>
+      <a class="card c-cuticle-coats" href="#p7">
+        <div class="image"><img src="IMAGES/BBPHM.jpg" alt="Black Beauty Protect Hair Moisturizer"></div>
+        <h3>Black Beauty Protect Hair Moisturizer</h3>
+      </a>
+      <a class="card c-cuticle-coats" href="#p8">
+        <div class="image"><img src="IMAGES/BBSHP.jpg" alt="Black Beauty Shine Cuticle Hair Serum"></div>
+        <h3>Black Beauty Shine Cuticle Hair Serum</h3>
+      </a>
+
+    </div>
   </main>
 </div>
 
-<div class="modal" id="modal">
+<!-- ================= PRODUCT MODALS ================= -->
+
+<div class="modal" id="p1">
+  <a class="backdrop" href="#" aria-label="Close"></a>
   <div class="modal-box">
-    <button class="close" id="closeBtn" aria-label="Close">&times;</button>
-    <div class="modal-image" id="mImage">No image yet</div>
+    <a class="close" href="#" aria-label="Close">&times;</a>
+    <div class="modal-image"><img src="IMAGES/BBSWC.webp" alt="Black Beauty 2-in-1 Shampoo with Conditioner"></div>
     <div class="modal-info">
-      <h3 id="mTitle"></h3>
-      <p id="mDesc"></p>
-      <button class="buy" id="buyBtn">Buy</button>
-      <div class="shops" id="shops"></div>
+      <h3>Black Beauty 2-in-1 Shampoo with Conditioner</h3>
+      <p>A convenient 2-in-1 formula that deeply cleanses the scalp while conditioning strands for stronger, thicker, and shinier hair.</p>
+      <a class="buy" href="#p1-shops">Buy</a>
+      <div class="shops" id="p1-shops">
+        <div class="label">Choose where to buy:</div>
+        <a class="shop-btn shopee" href="https://shopee.ph/Black-Beauty-2-in-1-Shampoo-w-Conditioner-500mL-i.267163785.56112636346" target="_blank" rel="noopener">Shopee</a>
+        <a class="shop-btn tiktok" href="https://shop.tiktok.com/ph/pdp/black-beauty-2-in-1-shampoo-conditioner-500ml-moisturizes-hair/1736200545323091536" target="_blank" rel="noopener">TikTok Shop</a>
+        <a class="shop-btn lazada" href="https://www.lazada.com.ph/products/black-beauty-2-in-1-shampoo-w-conditioner-500ml-i15532619065.html" target="_blank" rel="noopener">Lazada</a>
+      </div>
     </div>
   </div>
 </div>
- 
+
+<div class="modal" id="p2">
+  <a class="backdrop" href="#" aria-label="Close"></a>
+  <div class="modal-box">
+    <a class="close" href="#" aria-label="Close">&times;</a>
+    <div class="modal-image"><img src="IMAGES/BBGS.webp" alt="Black Beauty Gold Shampoo"></div>
+    <div class="modal-info">
+      <h3>Black Beauty Gold Shampoo</h3>
+      <p>A fortifying hair-thickening shampoo designed to revitalize weak, brittle strands, reduce hair fall, and encourage fuller hair growth.</p>
+      <a class="buy" href="#p2-shops">Buy</a>
+      <div class="shops" id="p2-shops">
+        <div class="label">Choose where to buy:</div>
+        <a class="shop-btn shopee" href="https://shopee.ph/Black-Beauty-Gold-Shampoo-500mL-i.267163785.51162638651" target="_blank" rel="noopener">Shopee</a>
+        <a class="shop-btn tiktok" href="https://shop.tiktok.com/ph/pdp/black-beauty-gold-shampoo-revitalize-weak-hair-stimulate-growth-reduce-hair-fall/1729620713865840697" target="_blank" rel="noopener">TikTok Shop</a>
+        <a class="shop-btn lazada" href="https://www.lazada.com.ph/shop-hair-care/black-beauty/" target="_blank" rel="noopener">Lazada</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="p3">
+  <a class="backdrop" href="#" aria-label="Close"></a>
+  <div class="modal-box">
+    <a class="close" href="#" aria-label="Close">&times;</a>
+    <div class="modal-image"><img src="IMAGES/BBCAS.webp" alt="Black Beauty Crystal Anti-Dandruff Shampoo"></div>
+    <div class="modal-info">
+      <h3>Black Beauty Crystal Anti-Dandruff Shampoo</h3>
+      <p>A cooling anti-dandruff shampoo that eliminates flakes, soothes itchy scalps, and nourishes roots for healthier, dandruff-free hair.</p>
+      <a class="buy" href="#p3-shops">Buy</a>
+      <div class="shops" id="p3-shops">
+        <div class="label">Choose where to buy:</div>
+        <a class="shop-btn shopee" href="https://shopee.ph/shop/267163785" target="_blank" rel="noopener">Shopee</a>
+        <a class="shop-btn tiktok" href="https://www.tiktok.com/shop" target="_blank" rel="noopener">TikTok Shop</a>
+        <a class="shop-btn lazada" href="https://www.lazada.com.ph/products/black-beauty-crystal-anti-dandruff-shampoo-i347910929-s133602979338.html" target="_blank" rel="noopener">Lazada</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="p4">
+  <a class="backdrop" href="#" aria-label="Close"></a>
+  <div class="modal-box">
+    <a class="close" href="#" aria-label="Close">&times;</a>
+    <div class="modal-image"><img src="IMAGES/BBSC.jpg" alt="Black Beauty Silk Conditioner"></div>
+    <div class="modal-info">
+      <h3>Black Beauty Silk Conditioner</h3>
+      <p>A lightweight nourishing conditioner that detangles, tames frizz, and leaves hair silky-soft, smooth, and manageable.</p>
+      <a class="buy" href="#p4-shops">Buy</a>
+      <div class="shops" id="p4-shops">
+        <div class="label">Choose where to buy:</div>
+        <a class="shop-btn shopee" href="https://shopee.ph/Black-Beauty-Silk-Conditioner-500mL-i.267163785.45612665109" target="_blank" rel="noopener">Shopee</a>
+        <a class="shop-btn tiktok" href="https://www.tiktok.com/shop" target="_blank" rel="noopener">TikTok Shop</a>
+        <a class="shop-btn lazada" href="https://www.lazada.com.ph/products/black-beauty-silk-conditioner-120ml-i5022983192.html" target="_blank" rel="noopener">Lazada</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="p5">
+  <a class="backdrop" href="#" aria-label="Close"></a>
+  <div class="modal-box">
+    <a class="close" href="#" aria-label="Close">&times;</a>
+    <div class="modal-image"><img src="IMAGES/BBHOK.jpg" alt="Black Beauty Hot Oil with Keratin"></div>
+    <div class="modal-info">
+      <h3>Black Beauty Hot Oil with Keratin</h3>
+      <p>An intensive at-home hair spa treatment infused with Keratin, Pro-Vitamin B5, and Vitamin E to repair damage and restore deep hydration.</p>
+      <a class="buy" href="#p5-shops">Buy</a>
+      <div class="shops" id="p5-shops">
+        <div class="label">Choose where to buy:</div>
+        <a class="shop-btn shopee" href="https://shopee.ph/shop/267163785" target="_blank" rel="noopener">Shopee</a>
+        <a class="shop-btn tiktok" href="https://shop.tiktok.com/ph/pdp/1737182096691332153" target="_blank" rel="noopener">TikTok Shop</a>
+        <a class="shop-btn lazada" href="https://www.lazada.com.ph/products/pdp-i15607522087.html" target="_blank" rel="noopener">Lazada</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="p6">
+  <a class="backdrop" href="#" aria-label="Close"></a>
+  <div class="modal-box">
+    <a class="close" href="#" aria-label="Close">&times;</a>
+    <div class="modal-image"><img src="IMAGES/BBFCCHS.jpg" alt="Black Beauty Fix Cuticle Coat Hair Serum"></div>
+    <div class="modal-info">
+      <h3>Black Beauty Fix Cuticle Coat Hair Serum</h3>
+      <p>A restorative hair serum enriched with Vitamins A, E, and K1 to smooth dry, damaged ends, control frizz, and prevent future breakage.</p>
+      <a class="buy" href="#p6-shops">Buy</a>
+      <div class="shops" id="p6-shops">
+        <div class="label">Choose where to buy:</div>
+        <a class="shop-btn shopee" href="https://shopee.ph/Black-Beauty-Cuticle-Coat-Fix-30mL-i.267163785.44131913058" target="_blank" rel="noopener">Shopee</a>
+        <a class="shop-btn tiktok" href="https://www.tiktok.com/shop" target="_blank" rel="noopener">TikTok Shop</a>
+        <a class="shop-btn lazada" href="https://www.lazada.com.ph/shop-hair-care/black-beauty/" target="_blank" rel="noopener">Lazada</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="p7">
+  <a class="backdrop" href="#" aria-label="Close"></a>
+  <div class="modal-box">
+    <a class="close" href="#" aria-label="Close">&times;</a>
+    <div class="modal-image"><img src="IMAGES/BBPHM.jpg" alt="Black Beauty Protect Hair Moisturizer"></div>
+    <div class="modal-info">
+      <h3>Black Beauty Protect Hair Moisturizer</h3>
+      <p>A protective leave-in serum with UV filters that shields hair from sun damage, heat styling, and chemical salon treatments.</p>
+      <a class="buy" href="#p7-shops">Buy</a>
+      <div class="shops" id="p7-shops">
+        <div class="label">Choose where to buy:</div>
+        <a class="shop-btn shopee" href="https://shopee.ph/shop/267163785" target="_blank" rel="noopener">Shopee</a>
+        <a class="shop-btn tiktok" href="https://www.tiktok.com/shop" target="_blank" rel="noopener">TikTok Shop</a>
+        <a class="shop-btn lazada" href="https://www.lazada.com.ph/shop-hair-care/black-beauty/" target="_blank" rel="noopener">Lazada</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="p8">
+  <a class="backdrop" href="#" aria-label="Close"></a>
+  <div class="modal-box">
+    <a class="close" href="#" aria-label="Close">&times;</a>
+    <div class="modal-image"><img src="IMAGES/BBSHP.jpg" alt="Black Beauty Shine Cuticle Hair Serum"></div>
+    <div class="modal-info">
+      <h3>Black Beauty Shine Cuticle Hair Serum</h3>
+      <p>A finishing polish serum that tames flyaways and frizz while infusing dull hair with a radiant, healthy-looking shine.</p>
+      <a class="buy" href="#p8-shops">Buy</a>
+      <div class="shops" id="p8-shops">
+        <div class="label">Choose where to buy:</div>
+        <a class="shop-btn shopee" href="https://shopee.ph/Black-Beauty-Cuticle-Coat-Shine-30mL-i.267163785.56362636924" target="_blank" rel="noopener">Shopee</a>
+        <a class="shop-btn tiktok" href="https://shop.tiktok.com/ph/pdp/black-beauty-cuticle-coat-shine-30ml-smooths-frizz-adds-shine/1736203443757680208" target="_blank" rel="noopener">TikTok Shop</a>
+        <a class="shop-btn lazada" href="https://www.lazada.com.ph/shop-hair-care/black-beauty/" target="_blank" rel="noopener">Lazada</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div class="row">
     <div><h4>Help &amp; Info</h4><p>FAQ</p><p>Shipping</p><p>Returns</p><p>Track Orders</p></div>
@@ -186,165 +382,6 @@
   </div>
   <p class="footer-name">Black Beauty</p>
 </footer>
-
- <script>
- 
-  const products = [
-    // SHAMPOO
-    {
-      name: "Black Beauty 2-in-1 Shampoo with Conditioner", cat: "shampoo", image: "IMAGES/BBSWC.webp",
-      desc: "A convenient 2-in-1 formula that deeply cleanses the scalp while conditioning strands for stronger, thicker, and shinier hair.",
-      shops: {
-        shopee: "https://shopee.ph/Black-Beauty-2-in-1-Shampoo-w-Conditioner-500mL-i.267163785.56112636346",
-        tiktok: "https://shop.tiktok.com/ph/pdp/black-beauty-2-in-1-shampoo-conditioner-500ml-moisturizes-hair/1736200545323091536",
-        lazada: "https://www.lazada.com.ph/products/black-beauty-2-in-1-shampoo-w-conditioner-500ml-i15532619065.html"
-      }
-    },
-
-    {
-      name: "Black Beauty Gold Shampoo", cat: "shampoo", image: "IMAGES/BBGS.webp",
-      desc: "A fortifying hair-thickening shampoo designed to revitalize weak, brittle strands, reduce hair fall, and encourage fuller hair growth.",
-      shops: {
-        shopee: "https://shopee.ph/Black-Beauty-Gold-Shampoo-500mL-i.267163785.51162638651",
-        tiktok: "https://shop.tiktok.com/ph/pdp/black-beauty-gold-shampoo-revitalize-weak-hair-stimulate-growth-reduce-hair-fall/1729620713865840697",
-        lazada: "https://www.lazada.com.ph/shop-hair-care/black-beauty/"
-      }
-    },
-
-    {
-      name: "Black Beauty Crystal Anti-Dandruff Shampoo", cat: "shampoo", image: "IMAGES/BBCAS.webp",
-      desc: "A cooling anti-dandruff shampoo that eliminates flakes, soothes itchy scalps, and nourishes roots for healthier, dandruff-free hair.",
-      shops: {
-        shopee: "https://shopee.ph/shop/267163785",
-        tiktok: "https://www.tiktok.com/shop",
-        lazada: "https://www.lazada.com.ph/products/black-beauty-crystal-anti-dandruff-shampoo-i347910929-s133602979338.html"
-      }
-    },
-
-    // CONDITIONER
-    {
-      name: "Black Beauty Silk Conditioner", cat: "conditioner", image: "IMAGES/BBSC.jpg",
-      desc: "A lightweight nourishing conditioner that detangles, tames frizz, and leaves hair silky-soft, smooth, and manageable.",
-      shops: {
-        shopee: "https://shopee.ph/Black-Beauty-Silk-Conditioner-500mL-i.267163785.45612665109",
-        tiktok: "https://www.tiktok.com/shop",
-        lazada: "https://www.lazada.com.ph/products/black-beauty-silk-conditioner-120ml-i5022983192.html"
-      }
-    },
-
-    // HAIR TREATMENT
-    {
-      name: "Black Beauty Hot Oil with Keratin", cat: "hair treatment", image: "IMAGES/BBHOK.jpg",
-      desc: "An intensive at-home hair spa treatment infused with Keratin, Pro-Vitamin B5, and Vitamin E to repair damage and restore deep hydration.",
-      shops: {
-        shopee: "https://shopee.ph/shop/267163785",
-        tiktok: "https://shop.tiktok.com/ph/pdp/1737182096691332153",
-        lazada: "https://www.lazada.com.ph/products/pdp-i15607522087.html"
-      }
-    },
-
-    // CUTICLE COATS
-    {
-      name: "Black Beauty Fix Cuticle Coat Hair Serum", cat: "cuticle coats", image: "IMAGES/BBFCCHS.jpg",
-      desc: "A restorative hair serum enriched with Vitamins A, E, and K1 to smooth dry, damaged ends, control frizz, and prevent future breakage.",
-      shops: {
-        shopee: "https://shopee.ph/Black-Beauty-Cuticle-Coat-Fix-30mL-i.267163785.44131913058",
-        tiktok: "https://www.tiktok.com/shop",
-        lazada: "https://www.lazada.com.ph/shop-hair-care/black-beauty/"
-      }
-    },
-
-    {
-      name: "Black Beauty Protect Hair Moisturizer", cat: "cuticle coats", image: "IMAGES/BBPHM.jpg",
-      desc: "A protective leave-in serum with UV filters that shields hair from sun damage, heat styling, and chemical salon treatments.",
-      shops: {
-        shopee: "https://shopee.ph/shop/267163785",
-        tiktok: "https://www.tiktok.com/shop",
-        lazada: "https://www.lazada.com.ph/shop-hair-care/black-beauty/"
-      }
-    },
-
-    {
-      name: "Black Beauty Shine Cuticle Hair Serum", cat: "cuticle coats", image: "IMAGES/BBSHP.jpg",
-      desc: "A finishing polish serum that tames flyaways and frizz while infusing dull hair with a radiant, healthy-looking shine.",
-      shops: {
-        shopee: "https://shopee.ph/Black-Beauty-Cuticle-Coat-Shine-30mL-i.267163785.56362636924",
-        tiktok: "https://shop.tiktok.com/ph/pdp/black-beauty-cuticle-coat-shine-30ml-smooths-frizz-adds-shine/1736203443757680208",
-        lazada: "https://www.lazada.com.ph/shop-hair-care/black-beauty/"
-      }
-    }
-  ];
-
-  const grid = document.getElementById('grid');
-  const items = document.querySelectorAll('#categories li');
-  let current = 'shampoo';
-
-  function render() {
-    const list = products.filter(p => p.cat === current);
-    if (!list.length) {
-      grid.innerHTML = '<p class="empty">No products yet.</p>';
-      return;
-    }
-    grid.innerHTML = list.map(p => `
-      <div class="card" data-index="${products.indexOf(p)}">
-        <div class="image">${imgHTML(p)}</div>
-        <h3>${p.name}</h3>
-      </div>`).join('');
-  }
-
-  function imgHTML(p) {
-    return p.image ? `<img src="${p.image}" alt="${p.name}" style="max-width:100%;max-height:100%">` : 'No image yet';
-  }
-
-  const modal  = document.getElementById('modal');
-  const mTitle = document.getElementById('mTitle');
-  const mDesc  = document.getElementById('mDesc');
-  const mImage = document.getElementById('mImage');
-  const buyBtn = document.getElementById('buyBtn');
-  const shops  = document.getElementById('shops');
-  let selected = null;
-
-  function openModal(p) {
-    selected = p;
-    mTitle.textContent = p.name;
-    mDesc.textContent = p.desc;
-    mImage.innerHTML = imgHTML(p);
-    shops.classList.remove('show');
-    shops.innerHTML = '';
-    buyBtn.style.display = '';
-    modal.classList.add('open');
-  }
-
-  function closeModal() { modal.classList.remove('open'); }
-
-  grid.addEventListener('click', e => {
-    const card = e.target.closest('.card');
-    if (card) openModal(products[card.dataset.index]);
-  });
-
-  buyBtn.addEventListener('click', () => {
-    const s = selected.shops;
-    shops.innerHTML = `
-      <div class="label">Choose where to buy:</div>
-      <a class="shop-btn shopee" href="${s.shopee}" target="_blank" rel="noopener">Shopee</a>
-      <a class="shop-btn tiktok" href="${s.tiktok}" target="_blank" rel="noopener">TikTok Shop</a>
-      <a class="shop-btn lazada" href="${s.lazada}" target="_blank" rel="noopener">Lazada</a>`;
-    shops.classList.add('show');
-    buyBtn.style.display = 'none';
-  });
-
-  document.getElementById('closeBtn').addEventListener('click', closeModal);
-  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-  items.forEach(li => li.addEventListener('click', () => {
-    current = li.dataset.cat;
-    items.forEach(i => i.classList.toggle('active', i === li));
-    render();
-  }));
-
-  render();
-</script>
 
 </body>
 </html>
