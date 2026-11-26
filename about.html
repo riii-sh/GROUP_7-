@@ -1,101 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Black Beauty</title>
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Times New Roman', serif; color: #222; }
-  a { color: inherit; text-decoration: none; }
-  h2 { font-weight: normal; text-transform: uppercase; text-align: center; margin-bottom: 30px; }
-  section { padding: 50px 40px; }
-
-  /* HEADER */
-  header { background: #f7f7f5; display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; }
-  .logo { height: 50px; width: 110px; object-fit: contain; }
-  nav a { text-transform: uppercase; font-size: 14px; margin: 0 12px; }
-  nav a:hover { text-decoration: underline; }
-  .spacer { width: 110px; }   /* keeps the menu centered */
-
-  /* HERO */
-  .hero { background: #e8ebe4; text-align: center; height: 50px; border: 2px;}
-  .hero h1 { font-weight: normal; font-size: 64px; text-transform: uppercase; }
-  .hero p { font-size: 22px; margin: 5px 0 20px; }
-  .order { border: 1px solid black; border-radius: 30px; padding: 6px 80px; display: inline-block; }
-  .perks { text-align: left; margin-top: 60px; font-size: 22px; line-height: 2; }
-
-  /* BEST SELLERS */
-  .best { background: white; }
-  .row { display: flex; gap: 25px; }
-  .product { flex: 1; border: 1px solid black; padding: 15px; text-align: center; }
-   
-  .product button { background: #A08E1E; color: white; border: none; border-radius: 20px; padding: 6px 22px; margin-top: 12px; }
-
-  /* INGREDIENTS */
-  .ingredients { background: #F1EBAD; }
-  .ingredient { flex: 1; display: flex; align-items: center; gap: 20px; }
-  .circle { width: 55px; height: 55px; border: 1px solid black; border-radius: 50%; }
-  .ingredients .row { margin-bottom: 25px; }
-  .ingredient h3 { font-weight: normal; text-transform: uppercase; font-size: 16px; }
-
-  /* JOURNAL */
-  .journal { background: white; }
-  .post { flex: 1; }
-  .post .image { height: 120px; }
-
-  /* FOOTER */
-  footer { background: black; color: white; padding: 40px; }
-  footer .row { font-size: 13px; }
-  footer div { flex: 1; }
-  footer h4 { text-transform: uppercase; margin-bottom: 8px; }
-  footer p { margin-bottom: 5px; }
-  .footer-name { text-align: center; margin-top: 30px; text-transform: uppercase; }
-
-  /* On small screens, stack everything */
-  @media (max-width: 800px) {
-    .row { flex-direction: column; }
-    header { flex-direction: column; gap: 10px; }
-    .spacer { display: none; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Us | Black Beauty</title>
+  <link rel="stylesheet" href="about.css">
+  <link rel="stylesheet" href="responsive.css">
 </head>
 <body>
+  <header>
+    <a href="home.html" aria-label="Black Beauty home">
+      <img class="logo" src="IMAGES/327176067_856763338905141_3168379092967939775_n-removebg-preview.png" alt="Black Beauty logo">
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="home.html">Home</a>
+      <a href="products.html">Shampoo &amp; Conditioners</a>
+      <a href="features.html">Features</a>
+      <a class="active" href="about.html">About</a>
+      <a href="contacts.html">Contacts</a>
+    </nav> 
+    <div class="spacer"></div>
+  </header>
 
-<header>
-  <!-- LOGO -->
-  <img class="logo" src="IMAGES/327176067_856763338905141_3168379092967939775_n-removebg-preview.png" alt="Black Beauty logo">
-  <nav>
-    <a href="home.html">Home</a>
-    <a href="products.html">Shampoo &amp; Conditioners</a>
-    <a href="features.html">Features</a>
-    <a href="about.html">About</a>
-    <a href="contacts.html">Contacts</a>
-  </nav>
-  <div class="spacer"></div>
-</header>
+  <main>
+    <section class="about-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Get to know us</p>
+        <h1>About Black Beauty</h1>
+        <p>Beautiful hair begins with care. Black Beauty brings together hair care essentials designed to help make your everyday routine simple, enjoyable, and confidence-boosting.</p>
+        <a class="gold-button" href="products.html">Explore Products</a>
+      </div>
+      <img class="hero-image" src="IMAGES/beautiful-woman-with-perfect-brown-shiny-hair_23-2151968644.avif" alt="Woman with shiny brown hair">
+    </section>
 
-<section class="hero">
-  <h1></h1>
-  <p></p>
-  <a class="order" href="shampoo-conditioner.html"></a>
-  <div class="perks">
-    <div></div>
-    <div></div>
-  </div>
-</section>
+    <section class="story">
+      <div class="story-inner">
+        <img src="IMAGES/images.jpg" alt="Hair care and beauty inspiration">
+        <div class="story-copy">
+          <p class="eyebrow">Our story</p>
+          <h2>Care for Every Strand</h2>
+          <p>Black Beauty is a hair care brand focused on everyday hair care. We bring together products such as shampoo, conditioner, and other hair care essentials to support a simple hair care routine.</p>
+          <p>We believe that caring for your hair is one way to care for yourself. Our goal is to encourage people to give their hair attention and feel confident in their own natural beauty.</p>
+        </div>
+      </div>
+    </section>
 
+    <section class="purpose">
+      <div class="section-heading">
+        <h2>Our Mission &amp; Vision</h2>
+        <p>What guides Black Beauty and what we hope to achieve.</p>
+      </div>
+      <div class="purpose-grid">
+        <article class="purpose-card">
+          <div class="symbol" aria-hidden="true">✦</div>
+          <h3>Our Mission</h3>
+          <p>To offer hair care choices that help people cleanse, condition, and care for their hair. We aim to make everyday hair care easier to understand and become a positive part of each person's self-care routine.</p>
+        </article>
+        <article class="purpose-card">
+          <div class="symbol" aria-hidden="true">✧</div>
+          <h3>Our Vision</h3>
+          <p>To be a trusted hair care choice that inspires people to care for their hair, appreciate their natural beauty, and build confidence through simple everyday routines.</p>
+        </article>
+      </div>
+    </section>
 
+    <section class="values">
+      <div class="section-heading">
+        <h2>What We Believe In</h2>
+        <p>Our values reflect the kind of hair care experience we want to share.</p>
+      </div>
+      <div class="value-grid">
+        <article class="value-card">
+          <div class="value-number">01</div>
+          <h3>Care</h3>
+          <p>We believe that healthy-looking hair starts with giving it regular attention and care.</p>
+        </article>
+        <article class="value-card">
+          <div class="value-number">02</div>
+          <h3>Confidence</h3>
+          <p>We encourage everyone to appreciate their own beauty and feel confident every day.</p>
+        </article>
+        <article class="value-card">
+          <div class="value-number">03</div>
+          <h3>Simplicity</h3>
+          <p>We believe hair care should be easy to understand and fit into everyday life.</p>
+        </article>
+      </div>
+    </section>
 
-<footer>
-  <div class="row">
-    <div><h4>Help &amp; Info</h4><p>FAQ</p><p>Shipping</p><p>Returns</p><p>Track Orders</p></div>
-    <div><h4>Company</h4><p>About Us</p><p>Careers</p><p>Contacts</p></div>
-    <div><h4>Legal</h4><p>Privacy Policy</p><p>Terms</p></div>
-    <div><h4>Newsletter</h4><p><input type="email" placeholder="Email"></p><h4>Social Media</h4></div>
-  </div>
-  <p class="footer-name">Black Beauty</p>
-</footer>
+    <section class="collection">
+      <div class="section-heading">
+        <h2>A Look at Our Collection</h2>
+        <p>Explore some of the Black Beauty products featured in our hair care collection.</p>
+      </div>
+      <div class="product-grid">
+        <article class="product-card">
+          <img src="IMAGES/BBSWC.webp" alt="Black Beauty shampoo product">
+          <h3>Shampoo</h3>
+          <p>For cleansing and refreshing your hair care routine.</p>
+        </article>
+        <article class="product-card">
+          <img src="IMAGES/BBSC.jpg" alt="Black Beauty conditioner product">
+          <h3>Conditioner</h3>
+          <p>For an added conditioning step after shampooing.</p>
+        </article>
+        <article class="product-card">
+          <img src="IMAGES/BBHOK.jpg" alt="Black Beauty hair treatment product">
+          <h3>Hair Treatment</h3>
+          <p>An extra step for those who want more hair care.</p>
+        </article>
+        <article class="product-card">
+          <img src="IMAGES/BBSHP.jpg" alt="Black Beauty hair care product">
+          <h3>Hair Care</h3>
+          <p>More choices to support your personal hair care routine.</p>
+        </article>
+      </div>
+      <p class="collection-note">Visit our Products page to see the full collection.</p>
+    </section>
 
+    <section class="closing">
+      <h2>Make Hair Care Part of Your Day</h2>
+      <p>Discover Black Beauty and find products to add to your everyday routine.</p>
+      <a class="gold-button" href="products.html">View Our Products</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="row">
+      <div><h4>Help &amp; Info</h4><p>FAQ</p><p>Shipping</p><p>Returns</p><p>Track Orders</p></div>
+      <div><h4>Company</h4><p><a href="about.html">About Us</a></p><p>Careers</p><p><a href="contacts.html">Contacts</a></p></div>
+      <div><h4>Legal</h4><p>Privacy Policy</p><p>Terms</p></div>
+      <div><h4>Newsletter</h4><p><input type="email" placeholder="Email" aria-label="Email address"></p><h4>Social Media</h4></div>
+    </div>
+    <p class="footer-name">Black Beauty</p>
+  </footer>
 </body>
 </html>

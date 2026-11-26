@@ -1,0 +1,95 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Times New Roman', serif; color: #222; background: #fdfcf7; }
+    a { color: inherit; text-decoration: none; }
+
+    /* HEADER - follows the other Black Beauty pages */
+    header { background: #f7f7f5; display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; }
+    .logo { height: 50px; width: 110px; object-fit: contain; }
+    nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 0; }
+    nav a { text-transform: uppercase; font-size: 14px; margin: 0 12px; }
+    nav a:hover { text-decoration: underline; }
+    nav a.active { border-bottom: 2px solid #a08e1e; padding-bottom: 5px; }
+    .spacer { width: 110px; }
+
+    /* INTRO */
+    .about-hero { min-height: 390px; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; padding: 55px max(40px, calc((100% - 1120px) / 2)); background: #e8ebe4; }
+    .hero-copy { max-width: 540px; }
+    .eyebrow { color: #81711a; text-transform: uppercase; letter-spacing: 4px; font-size: 13px; margin-bottom: 16px; }
+    h1 { font-size: clamp(38px, 5vw, 62px); font-weight: normal; text-transform: uppercase; letter-spacing: 4px; line-height: 1.08; margin-bottom: 18px; }
+    .hero-copy p { font-size: 19px; line-height: 1.7; }
+    .hero-image { width: 100%; height: 300px; object-fit: cover; }
+    .gold-button { display: inline-block; margin-top: 24px; padding: 12px 30px; border-radius: 30px; background: #a08e1e; color: white; text-transform: uppercase; font-size: 13px; letter-spacing: 1px; }
+    .gold-button:hover { background: #81711a; }
+
+    section { padding: 65px 40px; }
+    .section-heading { text-align: center; margin: 0 auto 35px; max-width: 760px; }
+    .section-heading h2 { font-size: 31px; font-weight: normal; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 14px; }
+    .section-heading p { font-size: 17px; line-height: 1.7; }
+
+    /* OUR STORY */
+    .story { background: white; }
+    .story-inner { max-width: 1050px; margin: auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: center; }
+    .story-inner img { width: 100%; height: 350px; object-fit: cover; }
+    .story-copy h2 { font-size: 30px; font-weight: normal; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 18px; }
+    .story-copy p { font-size: 17px; line-height: 1.8; margin-bottom: 13px; }
+
+    /* MISSION / VISION */
+    .purpose { background: #f1ebad; }
+    .purpose-grid { max-width: 1000px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+    .purpose-card { background: #fffef8; border: 1px solid #c8b85b; padding: 35px 30px; text-align: center; }
+    .purpose-card .symbol { color: #a08e1e; font-size: 34px; margin-bottom: 12px; }
+    .purpose-card h3 { font-size: 23px; font-weight: normal; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 14px; }
+    .purpose-card p { font-size: 16px; line-height: 1.8; }
+
+    /* VALUES */
+    .values { background: white; }
+    .value-grid { max-width: 1080px; margin: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .value-card { border: 1px solid #c9c2a4; padding: 28px 22px; text-align: center; }
+    .value-number { color: #a08e1e; font-size: 30px; margin-bottom: 12px; }
+    .value-card h3 { font-size: 19px; font-weight: normal; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+    .value-card p { font-size: 15px; line-height: 1.7; }
+
+    /* PRODUCT IMAGE STRIP */
+    .collection { background: #f1ebad; }
+    .product-grid { max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .product-card { background: #fffef8; padding: 18px; text-align: center; border: 1px solid #d4ca83; }
+    .product-card img { width: 100%; height: 190px; object-fit: contain; margin-bottom: 14px; }
+    .product-card h3 { font-size: 18px; font-weight: normal; text-transform: uppercase; margin-bottom: 8px; }
+    .product-card p { font-size: 15px; line-height: 1.6; }
+    .collection-note { text-align: center; margin-top: 25px; font-size: 15px; }
+
+    /* CLOSING */
+    .closing { background: #a08e1e; color: white; text-align: center; padding: 52px 25px; }
+    .closing h2 { font-size: 31px; font-weight: normal; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 13px; }
+    .closing p { font-size: 17px; line-height: 1.6; }
+    .closing .gold-button { background: white; color: #222; }
+    .closing .gold-button:hover { background: #222; color: white; }
+
+    /* FOOTER - matches the other pages */
+    footer { background: black; color: white; padding: 40px; }
+    footer .row { display: flex; gap: 25px; font-size: 13px; }
+    footer .row > div { flex: 1; }
+    footer h4 { text-transform: uppercase; margin-bottom: 8px; }
+    footer p { margin-bottom: 5px; }
+    footer a:hover { color: #d2bd52; }
+    .footer-name { text-align: center; margin-top: 30px; text-transform: uppercase; letter-spacing: 2px; }
+    footer input { border: 0; margin: 0 0 10px; padding: 8px; max-width: 220px; }
+
+    @media (max-width: 800px) {
+      header { flex-direction: column; gap: 10px; }
+      .spacer { display: none; }
+      .about-hero { grid-template-columns: 1fr; padding: 45px 25px; }
+      .hero-image { height: 250px; }
+      .story-inner { grid-template-columns: 1fr; }
+      .purpose-grid { grid-template-columns: 1fr; }
+      .value-grid { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      footer .row { flex-direction: column; }
+    }
+    @media (max-width: 500px) {
+      nav a { margin: 0 7px; font-size: 12px; }
+      section { padding: 45px 20px; }
+      .product-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .product-card { padding: 12px; }
+      .product-card img { height: 140px; }
+    }
