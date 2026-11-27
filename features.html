@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Black Beauty — Features</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Times New Roman', serif; color: #222; }
@@ -14,7 +17,7 @@
   /* HEADER */
   header { background: #f7f7f5; display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; }
   .logo { height: 50px; width: 110px; object-fit: contain; }
-  nav a { text-transform: uppercase; font-size: 14px; margin: 0 12px; font-weight: bold; }
+  nav a { font-family: 'Times New Roman', serif; color: #222; text-transform: uppercase; font-size: 14px; margin: 0 12px; }
   nav a.active { border-bottom: 2px solid #a08e1e; padding-bottom: 5px; }
   nav a:hover { text-decoration: underline; }
   .spacer { width: 110px; }
@@ -24,7 +27,19 @@
 
   /* CARD GRID — shared style for review + article cards */
   .row { display: flex; gap: 25px; flex-wrap: wrap; align-items: flex-start; }
-  .card { flex: 1; min-width: 230px; max-width: 270px; background: #fff; border: 1px solid #a08e1e; padding: 15px; text-align: center; }
+  .card { flex: 1; min-width: 230px; max-width: 270px; background: #fff; border: 1px solid #a08e1e; padding: 15px; text-align: center; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 6px 14px rgba(0,0,0,0.12); }
+
+  /* DETAIL VIEW — shown when a card is clicked */
+  .detail-view { display: none; padding: 40px; }
+  .back-link { display: inline-block; background: none; border: none; font-family: inherit; font-size: 13px; text-transform: uppercase; font-weight: bold; color: #a08e1e; cursor: pointer; margin-bottom: 30px; padding: 0; }
+  .back-link:hover { text-decoration: underline; }
+  .detail-grid { display: flex; gap: 50px; align-items: flex-start; max-width: 900px; margin: 0 auto; }
+  .detail-left { flex: 1; min-width: 220px; padding-top: 10px; }
+  .detail-left h2 { margin-bottom: 20px; }
+  .detail-left p { font-size: 14px; line-height: 1.6; white-space: pre-line; }
+  .detail-right { flex: 0 0 300px; width: 300px; background: #ece4bd; border: 1px solid #a08e1e; padding: 20px; display: flex; justify-content: center; align-items: flex-start; }
+  .detail-right img { width: 100%; height: 320px; object-fit: cover; }
 
   /* REVIEWS */
   .review-section { display: flex; justify-content: center; }
@@ -81,28 +96,84 @@
 <!-- GOLD BANNER -->
 <div class="gold-banner"></div>
 
+<div id="featuresGrid">
+
 <!-- REVIEWS -->
 <div class="review-section">
   <section class="reviews">
     <h2>What Our Customers Say</h2>
     <div class="row">
-      <div class="card review-card">
+      <div class="card review-card" data-title="Maria S." data-text="My hair has never felt this soft. I noticed a difference after just two weeks of using the shampoo and conditioner together.
+
+Before making the switch, my hair was in a constant cycle of dry, brittle ends and tangled mid-lengths—especially after long days commuting or spending time outdoors in the sun and wind. Every morning felt like a chore trying to detangle knots without snapping strands, and I relied heavily on thick leave-in creams and oils just to make my hair look presentable. The problem was that those heavy styling products only weighed my waves down, leaving my hair looking limp and dull by midday.
+
+From the very first wash with Black Beauty, I could tell the formula was different. The shampoo lathers into a rich, creamy foam that cleanses thoroughly without that harsh, squeaky-clean feeling that usually means your hair has been stripped of all moisture. When I followed up with the conditioner, my fingers glided straight through my hair in the shower—no tugging, no broken strands left behind.
+
+By the end of week two, my hair had completely transformed. Once it air-dries, it feels genuinely hydrated from the inside out, with a natural, weightless bounce and silky movement I haven't had in years. Even my stylist asked what I changed in my routine because my ends looked noticeably healthier and smoother." data-img="IMAGES/model1.jpg">
         <img class="review-img" src="IMAGES/model1.jpg" alt="Customer with shiny hair">
         <div class="stars">★★★★★</div>
         <p class="quote">"My hair has never felt this soft. I noticed a difference after just two weeks of using the shampoo and conditioner together."</p>
         <div class="reviewer">— Maria S.</div>
       </div>
-      <div class="card review-card">
+      <div class="card review-card" data-title="Jenna L." data-text="I was skeptical at first, but the hair growth results are real. My hairline has visibly filled in after a couple of months.
+
+After going through a stressful few months, I noticed my edges and temples looking thinner than ever, and pulling my hair back into a ponytail only made the sparse spots more obvious. I had already spent so much money on pricey scalp drops and heavy oils that either left my roots looking greasy or irritated my skin.
+
+I decided to simplify my routine and focus on scalp health with Black Beauty. Every wash day, I took an extra minute or two to gently massage the shampoo into my scalp using my fingertips before rinsing. Within the first two weeks, the first thing I noticed wasn't new growth—it was that I was losing way less hair in the shower drain and on my hairbrush.
+
+Around week six, I started spotting short, wispy baby hairs filling in along my temples and front hairline. Now, after two full months of consistent use, those baby hairs have grown longer and blended right in. My roots feel stronger, my scalp feels clean and balanced, and my ponytail feels noticeably thicker from root to tip." data-img="IMAGES/model2.jpg">
         <img class="review-img" src="IMAGES/model2.jpg" alt="Customer with shiny hair">
         <div class="stars">★★★★★</div>
         <p class="quote">"I was skeptical at first but the hair growth results are real. My hairline has visibly filled in after a couple of months."</p>
         <div class="reviewer">— Jenna L.</div>
       </div>
-      <div class="card review-card">
+      <div class="card review-card" data-title="Carla D." data-text="Smells amazing and leaves my hair shiny without feeling greasy. Will definitely repurchase.
+
+Having an oily scalp in humid weather has always been a frustrating balancing act for me. If I use a clarifying shampoo, my roots stay fresh for a few hours, but my ends turn into dry straw. On the other hand, whenever I try moisturizing shampoos, my hair goes flat and looks oily again before lunchtime.
+
+Black Beauty is the first duo I've tried that actually understands combination hair. It gives my scalp a crisp, refreshing reset that lifts away sweat and excess oil, while still delivering lightweight hydration down to my dry ends. There's zero heavy buildup or waxy coating left behind after rinsing, which gives my roots natural lift and volume all day long.
+
+On top of the results, the scent is an instant mood booster—clean, fresh, and subtly botanical without clashing with my perfume. Even by the end of a busy workday, my hair still looks glossy, moves freely, and smells freshly washed." data-img="IMAGES/model3.jpg">
         <img class="review-img" src="IMAGES/model3.jpg" alt="Customer with shiny hair">
         <div class="stars">★★★★☆</div>
-        <p class="quote">"Smells amazing and leaves my hair shiny without feeling greasy. Will definitely repurchase."</p>
+        <p class="quote">"Smells amazing and leaves my hair shiny without feeling greasy. Will definitely repurchase."<br></p>
         <div class="reviewer">— Carla D.</div>
+      </div>
+      <div class="card review-card" data-title="TRISHA M." data-text="My curls used to feel so dry and frizzy, especially in humid weather. Since switching to Black Beauty, my hair stays bouncy and defined all day.
+
+For years, I struggled to find a wash-day routine that didn't leave my curls feeling rough or puffy the moment I stepped outside. Most everyday shampoos stripped away my natural oils, forcing me to layer on three or four different gels and creams just to keep frizz under control.
+
+Switching to Black Beauty completely changed how my curls behave right out of the shower. The formula gives my hair immediate slip and deep moisture, allowing my natural curl pattern to clump together effortlessly while I'm still rinsing. I barely need any styling product afterward because my hair already feels soft, elastic, and well-hydrated.
+
+Even in sticky, humid weather, my curls hold their shape without expanding into a frizzy halo. Best of all, I can easily go two or three days between washes—just a quick mist of water in the morning brings the bounce and shine right back." data-img="IMAGES/model4.jpg">
+        <img class="review-img" src="IMAGES/model4.jpg" alt="Customer with shiny hair">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"My curls used to feel so dry and frizzy. Since switching to Black Beauty, my hair stays bouncy and defined all day."</p>
+        <div class="reviewer">— TRISHA M.</div>
+      </div>
+      <div class="card review-card" data-title="BIANCA R." data-text="This helped reduce my hair fall in just a few weeks without drying out my scalp.
+
+A few months after giving birth, postpartum shedding hit me hard. Every time I washed or brushed my hair, clumps would come out, and my scalp felt unusually tight, dry, and sensitive to almost everything I put on it. I was honestly nervous to even wash my hair because of how much shedding I'd see afterward.
+
+A friend recommended Black Beauty, and it gave my scalp immediate relief from the very first use. The formula is soothing and gentle—there's none of that tight, itchy, over-dried feeling after towel-drying, and any dry flaking around my crown disappeared within the first week.
+
+By week three, the excessive shedding had slowed down dramatically, and my hair felt much more anchored and resilient when brushing. Knowing I can cleanse my scalp thoroughly without triggering irritation has taken so much stress out of my routine." data-img="IMAGES/model5.avif">
+        <img class="review-img" src="IMAGES/model5.avif" alt="Customer with shiny hair">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"This helped reduce my hair fall in just a few weeks without drying out my scalp"<br></p>
+        <div class="reviewer"><br>— BIANCA R.</div>
+      </div>
+      <div class="card review-card" data-title="CAMILLE G." data-text="Leaves my hair super smooth, lightweight, and easy to detangle every single wash.
+
+Because I blow-dry and style my hair a couple of times a week for work, heat dryness and stubborn knots at the nape of my neck used to be a constant battle. My hair felt stiff on the outside yet dry on the inside, and brushing through it after a shower required way too much patience.
+
+From the very first wash with Black Beauty, I noticed a huge difference in manageability. The conditioner melts into thick strands almost instantly, smoothing down rough cuticles so my wide-tooth comb glides straight through without snagging.
+
+Once I blow-dry, my hair feels airy, silky, and noticeably shinier—never heavy, coated, or weighed down. It holds a smooth blowout effortlessly and feels like I just walked out of a salon every single time I wash it." data-img="IMAGES/model6.webp">
+        <img class="review-img" src="IMAGES/model6.webp" alt="Customer with shiny hair">
+        <div class="stars">★★★★★</div>
+        <p class="quote">"Leaves my hair super smooth and easy to detangle every single wash."</p>
+        <div class="reviewer"><br>—CAMILLE G.</div>
       </div>
     </div>
   </section>
@@ -115,37 +186,129 @@
   <section class="articles-features">
     <h2>Articles &amp; Insights</h2>
     <div class="row">
-      <div class="card article-card">
+      <div class="card article-card" data-title="5 Steps to Radiant Shine" data-text="Achieving glossy, mirror-like shine doesn't require an expensive salon appointment or a complicated ten-step routine. More often than not, dullness is simply caused by rough hair cuticles, leftover product buildup, and everyday friction. When the outer layer of your hair lies flat and smooth, it reflects light naturally. Follow these five simple habits every wash day to lock in lasting radiance:
+
+1. Pre-Wash Detangle: Before stepping into the shower, gently brush through dry hair starting from the ends and slowly working your way up to the roots. Wet hair is much more elastic and prone to snapping, so detangling beforehand prevents unnecessary breakage and allows your shampoo to distribute evenly.
+
+2. Scalp-Focused Cleanse: Apply Black Beauty Shampoo directly to your scalp rather than piling all your hair on top of your head. Use the pads of your fingertips—never your fingernails—to massage in small circular motions for a full 60 seconds. This lifts away excess oil and pollution while boosting healthy circulation at the roots.
+
+3. Mid-Length Moisture: Squeeze excess water out of your hair before applying Black Beauty Conditioner so the formula isn't diluted. Smooth it evenly from your ears down to your ends, avoiding the scalp so your roots stay airy and lifted. Let it sit for 3 to 5 minutes while you finish the rest of your shower routine.
+
+4. Cool Water Seal: Right before stepping out, switch the water temperature to cool for a quick 15-second final rinse. Cooler water helps the hair cuticle contract and lie flat, locking in the moisture from your conditioner and giving you an immediate boost in shine.
+
+5. Gentle Microfiber Blot: Ditch rough bath towels, which tug at delicate wet strands and create instant frizz. Instead, gently blot and squeeze out water using a soft microfiber towel or an old cotton t-shirt, letting your hair air-dry smoothly." data-img="IMAGES/article1.jpg">
         <div class="image" style="background-image:url('IMAGES/article1.jpg');"></div>
-        <h3>5 Steps to Radiant Shine</h3>
+        <h3>5 Steps to Radiant <br>  Shine</h3>
         <p>A simple weekly routine using Black Beauty products to keep your hair looking salon-fresh all week long.</p>
         <a class="pill-btn" href="#">Read More</a>
       </div>
-      <div class="card article-card">
+      <div class="card article-card" data-title="The Science of Hair Growth" data-text="Hair thinning rarely happens overnight. In most cases, it is the gradual result of stressed hair follicles, congested scalp pores, and weakened hair shafts breaking off before they ever reach their full potential length. Every day, your scalp accumulates a mix of natural sebum, sweat, dead skin cells, and environmental pollutants. When that buildup isn’t properly cleared away, it suffocates the follicle opening, causing new strands to grow in finer and weaker over time.
+
+At the same time, harsh shampoos loaded with aggressive detergents can swing the pendulum too far in the other direction—stripping your scalp's protective barrier and leaving existing strands brittle and prone to mid-shaft snapping. True hair growth requires both a clean environment at the root and resilient strength along the strand.
+
+Black Beauty's formula is built around this two-part approach: gentle scalp purification and follicle nourishment. Mild, effective cleansers lift away pore-blocking residue without disrupting your scalp's natural moisture balance, while fortifying botanical extracts help nourish the root anchor and reinforce the hair fiber. With consistent use, your scalp stays balanced, daily breakage drops, and your hair retains the fullness and length it was meant to grow." data-img="IMAGES/article2.jpg">
         <div class="image" style="background-image:url('IMAGES/article2.jpg');"></div>
         <h3>The Science of Hair Growth</h3>
         <p>What actually causes hair thinning, and how the ingredients in Black Beauty target it at the root.</p>
         <a class="pill-btn" href="#">Read More</a>
       </div>
-      <div class="card article-card">
+      <div class="card article-card" data-title="How to Tame Frizz in Humid Weather" data-text="Every head of hair comes with its own history—whether you're growing out past heat and color damage, battling daily humidity frizz, or trying to bring bounce back to flat, lifeless strands. Over the past few months, we checked in with real Black Beauty users across different hair types and routines to see what actually changed after 30 days of consistent use.
+
+What stood out most wasn't just how their hair looked immediately after washing, but how predictable and easy it became on days two and three. Customers with coarse or wavy hair noticed fewer tangles, softer ends, and natural curl definition without needing heavy leave-in creams. Meanwhile, those with fine hair or oily scalps reported cleaner roots, longer-lasting volume, and a noticeable reduction in mid-day flatness.
+
+Across every hair texture, the common thread was balance: when you stop overloading your hair with heavy waxes and start giving it clean, targeted hydration, your natural shine and strength do the rest of the work." data-img="IMAGES/article3.jpg">
         <div class="image" style="background-image:url('IMAGES/article3.jpg');"></div>
+        <h3>How to Tame Frizz in Humid Weather</h3>
+        <p>Practical styling habits and moisture-locking tips to keep your strands smooth and sleek no matter the forecast.</p>
+        <a class="pill-btn" href="#">Read More</a>
+      </div>
+      <div class="card article-card" data-title="Scalp Care 101: The Secret to Healthy Hair" data-text="If your hair seems to double in size the second you step outside into humid air, there's a simple scientific reason behind it. Frizz happens when dry, porous hair strands lift their outer cuticles to absorb excess water molecules floating in the air. In other words, frizzy hair isn't rejecting moisture—it's desperately reaching for it because it wasn't hydrated enough to begin with.
+
+The best way to humidity-proof your hair starts in the shower, not in front of the mirror. Giving your hair thorough, penetrating hydration with Black Beauty Conditioner fills the hair shaft from within so it has no reason to swell when exposed to damp air. After rinsing, avoid rough towel-drying or constantly running your fingers through your hair while it's still damp, as friction lifts the cuticle and sets the stage for halo frizz.
+
+Once your hair is about 80% dry, smooth a pea-sized drop of lightweight serum or leave-in lotion over your mid-lengths and outer layer. This creates an invisible, breathable barrier that keeps moisture locked inside your strands and humidity locked out all day long." data-img="IMAGES/article4.jpg">
+        <div class="image" style="background-image:url('IMAGES/article4.jpg');"></div>
+        <h3>Scalp Care 101: The Secret to Healthy Hair</h3>
+        <p>Why a balanced scalp is the foundation for stronger growth, and how to cleanse buildup without stripping natural oils.</p>
+        <a class="pill-btn" href="#">Read More</a>
+      </div>
+      <div class="card article-card" data-title="Day-to-Night Hair Care for Busy Schedules" data-text="Most of us spend plenty of time thinking about the lengths and ends of our hair while treating our scalp as an afterthought. Yet your scalp is living skin—and just like the skin on your face, it has pores, oil glands, and a delicate pH microbiome that directly controls the quality of the hair growing out of it.
+
+When your scalp is neglected or washed with overly harsh formulas, two things happen: either it dries out, leading to tightness, irritation, and visible flaking, or it goes into overdrive producing excess oil to compensate for being stripped. Both extremes weaken the environment around your hair follicles and leave your hair looking dull or weighed down.
+
+Treating your scalp like skincare doesn't need to be complicated. Wash regularly with a balanced, gentle shampoo like Black Beauty, take an extra minute to massage your roots to stimulate blood flow, and always rinse thoroughly around the crown and nape of your neck so zero residue remains. A calm, clean, well-nourished scalp is the single best investment you can make for thicker, shinier hair." data-img="IMAGES/article5.webp">
+        <div class="image" style="background-image:url('IMAGES/article5.webp');"></div>
+        <h3>Day-to-Night Hair Care for Busy Schedules</h3>
+        <p>Quick, low-effort routines to protect your hair while you sleep and refresh your look in minutes the next morning.</p>
+        <a class="pill-btn" href="#">Read More</a>
+      </div>
+      <div class="card article-card" data-title="Real Customers, Real Results" data-text="Early classes, long commutes, and packed mornings rarely leave time for a full wash, blow-dry, and styling session. That's why the easiest way to guarantee a good hair day tomorrow is spending two minutes prepping your hair before you go to sleep tonight.
+
+While you toss and turn at night, standard cotton pillowcases act like tiny sponges—pulling essential moisture out of your hair while creating rough friction that leads to morning bedhead, knots, and split ends. Simply switching to a satin or silk pillowcase, or loosely gathering your hair into a high, gentle bun secured with a soft satin scrunchie, prevents overnight tugging and preserves your natural volume at the roots.
+
+When your alarm goes off, take your hair down and let it settle for a minute. If your ends look slightly creased or dry, lightly mist your mid-lengths with water, smooth a tiny bit of conditioner or serum between your palms, and finger-comb into place. In under two minutes, your hair looks fresh, soft, and ready to walk out the door." data-img="IMAGES/article6.jpg">
+        <div class="image" style="background-image:url('IMAGES/article6.jpg');"></div>
         <h3>Real Customers, Real Results</h3>
         <p>A roundup of before-and-after stories from customers who've made Black Beauty part of their routine.</p>
         <a class="pill-btn" href="#">Read More</a>
       </div>
+      
     </div>
   </section>
 </div>
+
+</div><!-- /#featuresGrid -->
+
+<!-- DETAIL VIEW (shown when a card is clicked) -->
+<section class="detail-view" id="detailView">
+  <button class="back-link" id="backLink">&larr; Back to Features</button>
+  <div class="detail-grid">
+    <div class="detail-left">
+      <h2 id="detailTitle"></h2>
+      <p id="detailText"></p>
+    </div>
+    <div class="detail-right">
+      <img id="detailImage" src="" alt="">
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="row">
     <div><h4>Help &amp; Info</h4><p>FAQ</p><p>Shipping</p><p>Returns</p><p>Track Orders</p></div>
     <div><h4>Company</h4><p>About Us</p><p>Careers</p><p>Contacts</p></div>
     <div><h4>Legal</h4><p>Privacy Policy</p><p>Terms</p></div>
-    <div><h4>Newsletter</h4><p><input type="email" placeholder="Email"></p><h4>Social Media</h4></div>
+    <div><h4>Newsletter</h4><p><input typ e="email" placeholder="Email"></p><h4>Social Media</h4></div>
   </div>
   <p class="footer-name">Black Beauty</p>
 </footer>
+
+<script>
+  var featuresGrid = document.getElementById('featuresGrid');
+  var detailView = document.getElementById('detailView');
+  var detailTitle = document.getElementById('detailTitle');
+  var detailText = document.getElementById('detailText');
+  var detailImage = document.getElementById('detailImage');
+  var backLink = document.getElementById('backLink');
+
+  document.querySelectorAll('.card').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      e.preventDefault(); // stops the "Read More" link from jumping to "#"
+      detailTitle.textContent = card.dataset.title;
+      detailText.textContent = card.dataset.text;
+      detailImage.src = card.dataset.img;
+      detailImage.alt = card.dataset.title;
+      featuresGrid.style.display = 'none';
+      detailView.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  backLink.addEventListener('click', function () {
+    detailView.style.display = 'none';
+    featuresGrid.style.display = 'block';
+  });
+</script>
 
 </body>
 </html>
