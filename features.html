@@ -12,19 +12,25 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Times New Roman', serif; color: #222; }
   a { color: inherit; text-decoration: none; }
-  h2 { font-weight: bold; text-transform: uppercase; text-align: left; margin-bottom: 25px; font-size: 20px; }
-  section { padding: 40px; }
+  h2 { font-weight: normal; text-transform: uppercase; text-align: center; margin-bottom: 30px; }
+  section { padding: 50px 40px; }
 
   /* HEADER */
   header { background: #f7f7f5; display: flex; align-items: center; justify-content: space-between; padding: 10px 40px; }
   .logo { height: 50px; width: 110px; object-fit: contain; }
-  nav a { font-family: 'Times New Roman', serif; color: #222; text-transform: uppercase; font-size: 14px; margin: 0 12px; }
+  nav a { text-transform: uppercase; font-size: 14px; margin: 0 12px; }
   nav a.active { border-bottom: 2px solid #a08e1e; padding-bottom: 5px; }
   nav a:hover { text-decoration: underline; }
   .spacer { width: 110px; }
 
+  .band {
+    height: 34px;
+    background: linear-gradient(90deg, #8a7410 0%, #cdbb62 30%, #f0e49a 50%, #cdbb62 70%, #8a7410 100%);
+  }
+
+
   /* GOLD DIVIDER BANNER (matches the plain gradient strip in the reference) */
-  .gold-banner { height: 45px; background: linear-gradient(90deg, #d8cc85, #a08e1e); }
+  .gold-banner { height: 35px; background: linear-gradient(90deg, #a08e1e, #d8cc85, #a08e1e); }
 
   /* CARD GRID — shared style for review + article cards */
   .row { display: flex; gap: 25px; flex-wrap: wrap; align-items: flex-start; }
